@@ -1,0 +1,12 @@
+<button class="menu-toggle d-md-none" (click)="toggleMenu()" [ngClass]="{'shifted': menuVisible}"><i class="fa-solid fa-bars"></i></button>
+
+<div id="wrapper" class="wrapper">
+    <app-sidebar [menuVisible]="menuVisible"></app-sidebar>
+
+    <div *ngIf="menuVisible" (click)="toggleMenu()" class="content-wrapper2 w-100" [ngClass]="{'shifted': menuVisible}"></div>
+
+    <div class="content-wrapper w-100" [ngClass]="{'shifted': menuVisible}">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+

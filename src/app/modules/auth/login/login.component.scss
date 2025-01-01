@@ -1,0 +1,59 @@
+.background-img {
+    width: 100%;
+    height: 100vh;
+    background-image: url('/assets/img/fondo.jpg');
+    background-color: #ebedeb;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+
+.card{
+    border-radius: 15px;
+    height: 50%;
+    justify-content: center;
+    border: none;
+    background-color: rgb(40 82 96 / 50%);
+    backdrop-filter: blur(7px);
+    &.show {
+        opacity: 1.5;
+    }
+
+    .nombre-empresa{
+        font-weight: bold;
+        color: white;
+    }
+}
+
+img{
+    border-radius: 30%;
+    width: 30%;
+}
+
+.form-control{
+    border-radius: 10px 0 0 10px;
+    border: transparent;
+}
+
+.input-group-text{
+    border: transparent;
+    border-radius: 0 10px 10px 0;
+    background-color: white;
+    height: 100%;
+}
+
+.btn-primary{
+    background-color: rgba(40, 82, 96, 1);
+    border: none;
+    font-weight: bold;
+    &:hover{
+        background-color: rgb(224, 239, 243);
+        color: rgba(40, 82, 96, 1);
+    }
+}
+
+.btn-light{
+    border: transparent;
+    border-radius: 0 10px 10px 0 !important;
+    
+}

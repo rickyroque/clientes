@@ -1,0 +1,28 @@
+<aside class="app">
+    <aside class="sidebar" [class.active]="menuVisible">
+        <header class="text-center">
+          <div class="col-10 w-100">
+            <img src="assets/img/logo.webp" alt="">
+          </div>
+          
+          <b>HUMAN DIAGNOSTIC PATHOLOGY</b>
+        </header>
+      <nav class="sidebar-nav">
+   
+        <ul>
+          <li>
+            <a ><i class="fa-solid fa-stethoscope"></i><span>Inicio</span></a> 
+          </li>
+          <li>
+            <a [routerLink]="['/home/ordenes']"><i class="fa-solid fa-folder-tree"></i> <span class="">Ordenes</span></a>
+          </li>
+          <li>
+            <a [routerLink]="['/home/configuracion']"><i class="fa-solid fa-gears"></i> <span class="">Configuracion</span></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i> <span class="">Salir</span></a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+  </aside>

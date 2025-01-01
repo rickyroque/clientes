@@ -1,0 +1,28 @@
+<div class="row d-flex justify-content-center w-100 h-100 m-0">
+    <div class="col-lg-5 col-md-6 align-content-center ">
+        <div class="card">
+
+            <div class="row d-flex justify-content-center w-100 m-0">
+                    
+                <div class="col-10 d-flex justify-content-center pb-3">
+                    <span class="nombre-empresa">CHAT ONLINE</span>
+                </div>
+
+
+                <div class="col-10 chat-container">
+                    <div #messagesContainer class="messages">
+                      <div *ngFor="let msg of messages" [ngClass]="{'user-message': msg.sender === 'user', 'system-message': msg.sender === 'system'}" class="message">
+                        <span class="message-content">{{ msg.text }}</span>
+                      </div>
+                    </div>
+                  
+                    <div class="input-container">
+                      <input [(ngModel)]="newMessage" type="text" placeholder="Mensaje..." />
+                      <button (click)="sendMessage()">Enviar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

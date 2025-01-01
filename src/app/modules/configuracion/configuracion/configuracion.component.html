@@ -1,0 +1,50 @@
+<div class="row d-flex justify-content-center w-100 h-100 m-0">
+    <div class="col-lg-5 col-md-6 align-content-center ">
+        <div class="card">
+            <form [formGroup]="formSetting" >
+                <div class="row d-flex justify-content-center w-100 m-0">
+                    
+                    <div class="col-10 d-flex justify-content-center pb-5">
+                        <span class="nombre-empresa">CAMBIO DE CONTRASEÑA</span>
+                    </div>
+
+                    <div class="col-10 pb-3">
+                        <span class="nombre-empresa">Contraseña antigua</span>
+                        <div class="input-group">
+                            <input [type]="showPassOld?'text':'password'" formControlName="passOld" placeholder="Contraseña antigua" class="form-control"
+                            [ngClass]="{'is-invalid': isInvalid(formSetting.get('passOld'))}">
+                            <button type="button" (click)="toggleShowPassOld()" class="btn btn-light px-2">
+                                <i class="fas fa-{{showPassOld?'eye':'eye-slash'}}"></i>
+                            </button>
+                            <div class="invalid-feedback text-white">
+                                <span *ngIf="formSetting.controls['passOld'].hasError('required')">Password antiguo es <strong>requerido</strong>.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-10 pb-4">
+                        <span class="nombre-empresa">Contraseña nueva</span>
+                        <div class="input-group">
+                            <input [type]="showPassNew?'text':'password'" formControlName="passNew" placeholder="Contraseña nueva" class="form-control"
+                            [ngClass]="{'is-invalid': isInvalid(formSetting.get('passNew'))}">
+                            <button type="button" (click)="toggleShowPassNew()" class="btn btn-light px-2">
+                                <i class="fas fa-{{showPassNew?'eye':'eye-slash'}}"></i>
+                            </button>
+                            <div class="invalid-feedback text-white">
+                                <span *ngIf="formSetting.controls['passNew'].hasError('required')">Password nuevo es <strong>requerido</strong>.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-10 d-flex justify-content-center">
+                        <button class="btn btn-primary">Cambiar contraseña
+                        </button>
+                    </div>
+
+                </div>
+               
+            </form>
+
+        </div>
+    </div>
+</div>

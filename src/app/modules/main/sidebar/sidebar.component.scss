@@ -1,0 +1,171 @@
+@import "bourbon";
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600);
+
+body{
+  font-family: "Lato";
+  font-size: 100%; 
+	overflow-y: scroll; 
+  font-family: sans-serif; 
+  -ms-text-size-adjust: 100%; 
+  -webkit-text-size-adjust: 100%; 
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; 
+  text-rendering: optimizeLegibility;
+  background-color: #fefefe;
+}
+a{
+  text-decoration: none;
+  transition: all 0.6s ease;
+  
+  &:hover{
+    transition: all 0.6s ease;
+  }
+}
+
+.app{
+  height: 100vh;
+}
+/* -------------
+Sidebar
+----------------*/
+.sidebar {
+  width: 17em;
+  height: 100%;
+  top: 0;
+  overflow:hidden;
+  //background-color: #19222a;
+  -webkit-transform: translateZ(0);
+  visibility: visible;
+  -webkit-backface-visibility: hidden;
+  z-index: 1000;
+  box-shadow: none;
+
+  header{
+    background-color: rgba(40, 82, 96, 1);
+    width: 100%;
+    display:block;
+    padding: 0.75em	1em;
+    color: white;
+  }
+
+  position: fixed; /* Asegura que se quede fijo en la pantalla */
+  left: -17em; /* Oculto fuera de la pantalla en móvil */
+  transition: left 0.3s ease;
+
+  &.active {
+    left: 0;
+    box-shadow: none; 
+  }
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    left: 0;
+    position: relative;
+    box-shadow: 1px 0px 10px 0px rgb(40 82 96 / 50%);
+  }
+}
+
+/* -------------
+Sidebar Nav
+----------------*/
+.sidebar-nav {
+  position: fixed;
+  //width: 13em;
+  background-color: #3097aa;
+  height: 100%;
+  font-weight: 400; 
+  font-size: 1.2em;
+  overflow: auto;
+  padding-bottom: 6em;
+  z-index: 9;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  
+  ul{
+    list-style:none;
+    display: block;
+    padding: 0;
+    margin: 0;
+    
+    li{
+      margin-left: 0;
+      padding-left: 0;
+      //min-width: 13em;
+      display:inline-block;
+      width: 100%;
+      
+      a{
+        color: rgba(255,255,255,0.9);
+        font-size: 0.75em;
+        padding: 1.05em	1em;
+        position: relative;
+        display:block;
+        
+        &:hover{
+          background-color: #b1bdc1;
+          transition: all 0.6s ease;
+        }
+      }
+/* -------------
+Sidebar: icons
+----------------*/
+      i{
+        font-size: 1.8em;
+        padding-right: 0.5em;
+        width: 9em;
+        display: inline;
+        vertical-align:middle;
+      }  
+    }
+  }
+
+/* -------------
+Chev elements
+----------------*/ 
+& > ul > li > a:after {
+  content: '\f105'; /* Código Unicode para el icono de engranajes */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900; /* Necesario para los iconos sólidos */
+  font-size: 0.5em;
+  width: 10px;
+  color: #fff;
+  position: absolute;
+  right: 0.75em;
+  top: 45%;
+}
+/* -------------
+Nav-Flyout
+----------------*/
+  & .nav-flyout {
+    position: absolute;
+    background-color: rgba(40, 82, 96, 1);;
+    z-index: 9;
+    left: 2.5em;
+    top: 0;
+    height: 100vh;
+    transform: translateX(100%);
+    transition: all 0.5s ease;
+    
+    a:hover{
+      //background-color: rgba(255,255,255, 0.05)
+    }
+  }
+
+/* -------------
+Hover
+----------------*/
+  & ul > li:hover{
+      .nav-flyout{
+        transform: translateX(0);
+        transition: all 0.5s ease;
+    }
+  }
+}
+
+img{
+  width: 20%;
+  border-radius: 30%;
+}

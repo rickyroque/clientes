@@ -1,0 +1,55 @@
+<div class="w-100 h-100 background-img position-fixed d-flex justify-content-center">
+    <div class="row d-flex justify-content-center w-100">
+        <div class="col-lg-5 col-md-6 align-content-center ">
+            <div class="card">
+                <form [formGroup]="formLogin" >
+                    <div class="row d-flex justify-content-center w-100 m-0">
+                        
+                        <div class="col-10 d-flex justify-content-center pb-2">
+                            <img src="assets/img/logo.webp" alt="">
+                            
+                        </div>
+
+                        <div class="col-10 d-flex justify-content-center pb-5">
+                            <span class="nombre-empresa">NOMBRE EMPRESA</span>
+                        </div>
+                        
+                        <div class="col-10 pb-3">
+                            <div class="input-group">
+                                <input type="email" formControlName="usuario" placeholder="Email" class="form-control"
+                                [ngClass]="{'is-invalid': isInvalid(formLogin.get('usuario'))}">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+                                </div>
+                                <div class="invalid-feedback text-white">
+                                    <span *ngIf="formLogin.controls['usuario'].hasError('required')">Email es <strong>requerido</strong>.</span>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-10 pb-4">
+                            <div class="input-group">
+                                <input [type]="showPass?'text':'password'" formControlName="pass" placeholder="Contraseña" class="form-control"
+                                [ngClass]="{'is-invalid': isInvalid(formLogin.get('pass'))}">
+                                <button type="button" (click)="toggleShowPass()" class="btn btn-light px-2">
+                                    <i class="fas fa-{{showPass?'eye':'eye-slash'}}"></i>
+                                </button>
+                                <div class="invalid-feedback text-white">
+                                    <span *ngIf="formLogin.controls['usuario'].hasError('required')">Password es <strong>requerido</strong>.</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-10 d-flex justify-content-center">
+                            <button class="btn btn-primary" (click)="ir()">Iniciar sesión
+                            </button>
+                        </div>
+
+                    </div>
+                   
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
