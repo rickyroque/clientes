@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { OrdenesRoutingModule } from './ordenes-routing.module';
 import { OrdenesComponent } from './ordenes/ordenes.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot(),
   ],
   providers: [
   ],

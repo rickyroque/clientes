@@ -2,16 +2,27 @@
     <aside class="sidebar" [class.active]="menuVisible">
         <header class="text-center">
           <div class="col-10 w-100">
-            <img src="assets/img/logo.webp" alt="">
+            <img src="assets/img/logoDB.png" alt="">
           </div>
           
-          <b>HUMAN DIAGNOSTIC PATHOLOGY</b>
+          <!--<b>HUMAN DIAGNOSTIC PATHOLOGY</b>-->
         </header>
       <nav class="sidebar-nav">
    
         <ul>
           <li>
-            <a ><i class="fa-solid fa-stethoscope"></i><span>Inicio</span></a> 
+            <a [routerLink]="['/home/calendario']"><i class="far fa-calendar-alt"></i><span>Calendario</span></a> 
+            <!--<ul class="nav-flyout">
+              <li>
+                <a href="#">Opcion1</a>
+              </li>
+              <li>
+                <a href="#">Opcion2</a>
+              </li>
+              <li>
+                <a href="#">Opcion3</a>
+              </li>
+            </ul>-->
           </li>
           <li>
             <a [routerLink]="['/home/ordenes']"><i class="fa-solid fa-folder-tree"></i> <span class="">Ordenes</span></a>

@@ -1,0 +1,58 @@
+::ng-deep .table-containerRF {
+    overflow-x: auto;
+  
+    .mat-mdc-header-cell:first-child, .mat-mdc-cell:first-child {
+      border-right: 2px solid #e5e8f4 !important;
+      z-index: 3 !important;
+      left: 20px !important;
+    }
+  
+    .mat-mdc-header-cell:last-child, .mat-mdc-cell:last-child {
+      border-left: 2px solid #e5e8f4 !important;
+      z-index: 3 !important;
+      left: 0px !important;
+    }
+  
+    .mat-mdc-cell:not(:first-child) {
+      margin-left: -2px;
+    }
+  
+    .table-solicitudesRF {
+      //table-layout: fixed;
+      border-collapse: separate !important;
+      border-spacing: 0 !important;
+      width: -webkit-fill-available !important;
+      th.mat-mdc-header-cell {
+          
+        .mat-sort-header-container {
+          justify-content: center !important;
+          .mat-sort-header-content {
+            display: block !important;
+            width: 100px !important;
+          }
+        }
+      }
+        
+      td.mat-mdc-cell,
+      th.mat-mdc-header-cell {
+        text-align: center !important;
+        padding-left: 0.35rem !important;
+        padding-right: 0.35rem !important;
+      }
+  
+      .mat-mdc-cell.mat-column-valor,
+      .mat-mdc-header-cell.mat-column-valor {
+        right: -1px !important;
+        z-index: 101 !important;
+      }
+
+      .mat-mdc-cell.mat-column-viaje,
+      .mat-mdc-header-cell.mat-column-viaje {
+        left: -1px !important;
+        z-index: 101 !important;
+      }
+
+    }
+  }
+
+  

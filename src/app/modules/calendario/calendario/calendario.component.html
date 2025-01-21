@@ -1,0 +1,126 @@
+<section class="section">
+    <div class="section-header text-primary">
+      <div class="row">
+        <div class="col-sm-8">
+          <h1 class="section-title">
+            {{ title | uppercase }}
+          </h1>
+          <xng-breadcrumb></xng-breadcrumb>
+        </div>
+        
+      </div>
+    </div>
+  
+    <div class="section-body animated fadeInRight">
+  
+      <div class="col-12 p-0">
+      
+        <div class="card shadowgreen">
+          <div class="card-body">
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 p-0">
+      
+        <div class="card shadowgreen">
+          
+          <div class="card-body  table-containerRF">
+  
+            <div class="overflow-auto">
+              
+              <table class="table-solicitudesRF" mat-table matSort [dataSource]="dataSource">
+                
+                <ng-container matColumnDef="viaje" sticky>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Viaje</th>
+                  <td mat-cell class="fila" *matCellDef="let element">
+                    {{ element.viaje }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fecha1">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+                  <td mat-cell class="fila" *matCellDef="let element">
+                    {{ element.fecha }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fecha2">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+                  <td mat-cell class="fila" *matCellDef="let element">
+                    {{ element.fecha }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fecha3">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+                  <td mat-cell class="fila" *matCellDef="let element">
+                    {{ element.fecha }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fecha4">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+                  <td mat-cell class="fila" *matCellDef="let element">
+                    {{ element.fecha }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fecha5">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+                  <td mat-cell class="fila" *matCellDef="let element">
+                    {{ element.fecha }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="estado">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+                  <td mat-cell class="fila" *matCellDef="let element">
+                    {{ element.estado }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="valor" stickyEnd>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Valor</th>
+                  <td mat-cell class="fila" *matCellDef="let element">
+                    {{ element.valor }}
+                  </td>
+                </ng-container>
+  
+                <ng-container matColumnDef="noEncontro">
+                  <td class="px-1" mat-footer-cell *matFooterCellDef [attr.colspan]="4">
+                      <div class="w-100 text-center">
+                          <span>NO SE ENCONTRARON RESULTADOS...</span>
+                      </div>
+                  </td>
+                </ng-container>
+  
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                <tr [hidden]="(dataSource.data!.length || 0) > 0 || isLoading" mat-footer-row *matFooterRowDef="['noEncontro']"></tr>
+              </table>
+              
+            </div>
+            
+            <div *ngIf="isLoading" class="mb-3">
+              <mat-progress-bar
+                color="primary"
+                mode="indeterminate"
+              ></mat-progress-bar>
+            </div>
+            <div>
+              <mat-paginator
+                [pageSizeOptions]="[5, 6, 7, 30]"
+                showFirstLastButtons
+              ></mat-paginator>
+            </div>
+    
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+    
+</section>

@@ -1,5 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { GeneralService } from 'src/app/services/general.service';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-ordenes',
@@ -8,56 +8,22 @@ import { GeneralService } from 'src/app/services/general.service';
 })
 export class OrdenesComponent {
 
-  messages: { text: string; sender: 'user' | 'system' }[] = [];
-  newMessage: string = '';
+  @ViewChild('mdlEjemplo', { static: true }) public mdlEjemplo!: TemplateRef<any>;
+  modalRef!: BsModalRef;
 
-  @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
+  constructor(
+    private modalService: BsModalService
+  ) {}
 
-  constructor(private chatService: GeneralService) {}
-
-  sendMessage() {
-    if (this.newMessage.trim()) {
-      
-      this.messages.push({ text: this.newMessage.trim(), sender: 'user' });
-  
-      
-      this.chatService.sendMessage(this.newMessage.trim()).subscribe({
-        next: (response) => {
-         
-          if (response && response.response) {
-            this.messages.push({ text: response.response, sender: 'system' });
-          } else {
-            this.messages.push({
-              text: 'Respuesta no válida del servidor.',
-              sender: 'system',
-            });
-          }
-          this.scrollToBottom();
-        },
-        error: (err) => {
-          console.error('Error al enviar el mensaje:', err);
-          this.messages.push({
-            text: 'Hubo un error al procesar tu mensaje.',
-            sender: 'system',
-          });
-          this.scrollToBottom();
-        },
-      });
-
-      this.newMessage = '';
-    }
+  openModalDepartamento(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'modal-supremo' })
+    );
   }
 
-  scrollToBottom(): void {
-    try {
-      this.messagesContainer.nativeElement.scrollTop = this.messagesContainer.nativeElement.scrollHeight;
-    } catch (err) {
-      console.error('Error scrolling to bottom:', err);
-    }
-  }
-
-  ngAfterViewChecked(): void {
-    this.scrollToBottom();
+  public open() {
+    this.openModalDepartamento(this.mdlEjemplo);
   }
 
 }

@@ -9,6 +9,11 @@ const routes: Routes = [
 
         children: [
             {
+                path: 'calendario',
+                loadChildren: () => import('../calendario/calendario.module').then(m => m.CalendarioModule),
+            },
+
+            {
               path: 'ordenes',
               loadChildren: () => import('../ordenes/ordenes.module').then(m => m.OrdenesModule),
             },

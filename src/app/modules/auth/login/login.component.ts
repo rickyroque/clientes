@@ -22,7 +22,7 @@ export class LoginComponent {
   }
 
   ir(){
-    this.router.navigate(['/home/ordenes'])
+    this.router.navigate(['/home/calendario'])
   }
 
   toggleShowPass() {

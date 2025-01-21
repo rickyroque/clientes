@@ -1,7 +1,7 @@
 .background-img {
     width: 100%;
     height: 100vh;
-    background-image: url('/assets/img/fondo.jpg');
+    background-image: url('/assets/img/fondo1.jpg');
     background-color: #ebedeb;
     background-size: cover; 
     background-position: center; 
@@ -13,7 +13,7 @@
     height: 50%;
     justify-content: center;
     border: none;
-    background-color: rgb(40 82 96 / 50%);
+    background-color: rgb(61 168 135 / 50%);
     backdrop-filter: blur(7px);
     &.show {
         opacity: 1.5;
@@ -26,8 +26,8 @@
 }
 
 img{
-    border-radius: 30%;
-    width: 30%;
+    border-radius: 0%;
+    width: 50%;
 }
 
 .form-control{
@@ -43,12 +43,12 @@ img{
 }
 
 .btn-primary{
-    background-color: rgba(40, 82, 96, 1);
+    background-color: rgba(58, 79, 123, 1);
     border: none;
     font-weight: bold;
     &:hover{
         background-color: rgb(224, 239, 243);
-        color: rgba(40, 82, 96, 1);
+        color: rgba(58, 79, 123, 1);
     }
 }
 
