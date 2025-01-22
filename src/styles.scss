@@ -18,13 +18,55 @@ $theme: mat.define-light-theme((
 
 @include mat.all-component-themes($theme);
 
+$border-radius: 15px;
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
-$border-radius: 15px;
+.section-title{
+  color: rgb(58 79 123);
+  font-weight: bold !important; 
+  font-size: 1.5rem !important;
+}
+
+xng-breadcrumb{
+  color: #3DA888;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+  &:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  }
+  &:active {
+    background-color: #999999;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: #e1e1e1;
+  border-radius: 4px;
+  &:hover {
+    background: #d4d4d4;
+  }
+  &:active {
+    background: #d4d4d4;
+  }
+}
+
+.img-modal{
+  width: 50%;
+}
 
 .modal-supremo.modal-dialog {
     display: flex;
@@ -35,12 +77,17 @@ $border-radius: 15px;
     margin: auto;
     border: none;
     .modal-content {
-      border-radius: 20px 20px 15px 15px;
+      border-radius: 20px 20px 20px 20px;
+      box-shadow: 0 0 1rem 10px rgb(58 79 123 / 20%);
+      border: none;
       .modal-header {
         background-color: #3DA888;
         color: white;
-        border-top-right-radius: $border-radius;
-        border-top-left-radius: $border-radius;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+        h4{
+          margin: 10px 0px 10px;
+        }
         .close {
           color: white;
           cursor: pointer;
@@ -89,34 +136,6 @@ $border-radius: 15px;
   box-shadow: 0 0 1rem 10px rgb(58 79 123 / 20%) !important;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 4px;
-  &:hover {
-    background: #b3b3b3;
-    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
-  }
-  &:active {
-    background-color: #999999;
-  }
-}
-
-::-webkit-scrollbar-track {
-  background: #e1e1e1;
-  border-radius: 4px;
-  &:hover {
-    background: #d4d4d4;
-  }
-  &:active {
-    background: #d4d4d4;
-  }
-}
-
 mat-paginator .mat-mdc-text-field-wrapper {
   border: none;
   box-shadow: none;
@@ -125,4 +144,14 @@ mat-paginator .mat-mdc-text-field-wrapper {
 
 mat-paginator .mdc-notched-outline {
   display: none;
+}
+
+.btn-primary-custom{
+  background-color: rgba(58, 79, 123, 1);
+  border: none;
+  border-radius: 10px;
+  &:hover{
+      background-color: rgb(224, 239, 243);
+      color: rgba(58, 79, 123, 1);
+  }
 }
