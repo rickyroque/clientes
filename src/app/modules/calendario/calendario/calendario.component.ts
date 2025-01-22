@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Calendario } from 'src/app/models/calendario.model';
 
 @Component({
@@ -12,6 +13,9 @@ import { Calendario } from 'src/app/models/calendario.model';
 export class CalendarioComponent implements OnInit{
 
   title = 'Calendario de Viajes';
+
+  @ViewChild('mdlEjemplo', { static: true }) public mdlEjemplo!: TemplateRef<any>;
+  modalRef!: BsModalRef;
 
   displayedColumns: string[] = [
     'viaje',
@@ -33,7 +37,7 @@ export class CalendarioComponent implements OnInit{
   listCalendario: Calendario[] = [];
 
   constructor(
-    private paginatorIntl: MatPaginatorIntl,
+    private paginatorIntl: MatPaginatorIntl, private modalService: BsModalService
   ) { 
     this.paginatorIntl.itemsPerPageLabel = 'Elementos por página: ';
   }
@@ -114,4 +118,15 @@ export class CalendarioComponent implements OnInit{
           
   }
 
+  openModalDepartamento(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'modal-supremo' })
+    );
+  }
+
+  public open() {
+    this.openModalDepartamento(this.mdlEjemplo);
+  }
+  
 }
