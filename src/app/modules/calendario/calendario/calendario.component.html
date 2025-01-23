@@ -11,8 +11,11 @@
       </div>
     </div>
   
+
     <div class="section-body animated fadeInRight">
   
+      <app-loading></app-loading>
+
       <div class="col-12 p-0">
       
         <div class="card shadowgreen">
@@ -21,7 +24,8 @@
             <div class="row text-end">
               <div class="col-12">
                 <button
-                  class="btn btn-primary btn-primary-custom"
+                  class="btn btn-primary btn-primary-custom ladda-button"
+                  [ladda]="loadDepartamento" data-style="slide-down"
                   [disabled]="isLoading"
                   (click)="open()"
                 >

@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
     "@fortawesome/fontawesome-free": "^6.6.0",
+    "angular2-ladda": "^5.0.0",
     "bootstrap": "^5.3.3",
     "bourbon": "^7.3.0",
     "ngx-bootstrap": "^11.0.2",

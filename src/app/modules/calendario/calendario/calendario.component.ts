@@ -33,6 +33,7 @@ export class CalendarioComponent implements OnInit{
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
   isLoading!: boolean;
+  loadDepartamento : boolean = true;
 
   listCalendario: Calendario[] = [];
 

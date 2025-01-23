@@ -3,6 +3,7 @@
 @include mat.core();
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import '~ladda/dist/ladda-themeless.min.css';
 
 $primary: mat.define-palette(mat.$indigo-palette);
 $accent: mat.define-palette(mat.$pink-palette);

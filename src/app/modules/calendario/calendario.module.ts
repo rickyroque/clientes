@@ -7,6 +7,8 @@ import { CalendarioRoutingModule } from './calendario-routing.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BreadcrumbModule } from 'xng-breadcrumb';
 import { AppMaterialModule } from 'src/app/app-material.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { LaddaModule } from 'angular2-ladda';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { AppMaterialModule } from 'src/app/app-material.module';
     ModalModule.forRoot(),
     BreadcrumbModule,
     AppMaterialModule,
+    SharedModule,
+    LaddaModule,
   ],
   providers: [
   ],
