@@ -55,4 +55,22 @@
     }
   }
 
-  
+
+  ::ng-deep .mat-mdc-tab-group {
+    box-shadow: none;
+    > .mat-mdc-tab-header {
+        border: none;
+        .mat-mdc-tab-list .mat-mdc-tab-labels {
+
+          width: fit-content;
+          
+          .mdc-tab.mat-mdc-tab.mdc-tab--active.mdc-tab-indicator--active {
+            background-color: white !important;
+            border-radius: 15px 15px 0 0;
+            border: 2px solid #e5e8f4;
+          }
+        }
+        
+        
+    }
+}

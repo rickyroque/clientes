@@ -155,12 +155,6 @@ mat-paginator .mdc-notched-outline {
       background-color: rgb(224, 239, 243);
       color: rgba(58, 79, 123, 1);
   }
-  &:focus{
-    box-shadow: none;
-    outline: none;
-    background-color: rgba(58, 79, 123, 1);
-    border-color: rgba(58, 79, 123, 1);
-  }
 }
 
 .input-group-text{
