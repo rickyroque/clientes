@@ -9,6 +9,7 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
 import { AppMaterialModule } from 'src/app/app-material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LaddaModule } from 'angular2-ladda';
+import { AppBootstrapModule } from 'src/app/app-bootstrap.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { LaddaModule } from 'angular2-ladda';
     ModalModule.forRoot(),
     BreadcrumbModule,
     AppMaterialModule,
+    AppBootstrapModule,
     SharedModule,
     LaddaModule,
   ],

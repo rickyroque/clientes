@@ -27,7 +27,7 @@
                   class="btn btn-primary btn-primary-custom ladda-button"
                   [ladda]="loadDepartamento" data-style="slide-down"
                   [disabled]="isLoading"
-                  (click)="open()"
+                  (click)="generarPDF()"
                 >
                   Crear  <i class="fas fa-plus"></i>
                 </button>
@@ -167,7 +167,60 @@
   </div>
   <div class="modal-body">
     <div class="card">
-      
+      <form [formGroup]="formCalendario" class="row justify-content-center">
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Viaje:</label>
+            <div class="col-sm-9">
+              <select
+                formControlName="viaje"
+                class="form-select form-select-sm"
+              >
+                <option value="" selected>TODOS</option>
+                <option value="1">nombre</option>
+              </select>
+              <div class="invalid-feedback">
+                Debe ingresar <b>Viaje</b>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Fecha:</label>
+            <div class="col-sm-9">
+              <div class="input-group date">
+                <input
+                    type="text"
+                    placeholder="Rango de Fecha"
+                    #dp="bsDaterangepicker"
+                    class="form-control"
+                    formControlName="fecha"
+                    bsDaterangepicker
+                    [bsConfig]="{
+                    isAnimated: true,
+                    containerClass: 'theme-dark-blue'
+                    }"
+                />
+                <div class="input-group-append">
+                    <span
+                    [attr.aria-expanded]="dp.isOpen"
+                    (click)="dp.toggle()"
+                    class="input-group-text"
+                    ><i class="fa fa-calendar"></i
+                    ></span>
+                </div>
+              </div>
+              <div class="invalid-feedback">
+                Debe ingresar <b>Rango de fecha</b>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </form>
     </div>
   </div>
 </ng-template>
