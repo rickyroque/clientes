@@ -1,0 +1,131 @@
+<section class="section">
+    <div class="section-header text-primary">
+      <div class="row">
+        <div class="col-sm-8">
+          <h1 class="section-title">
+            {{ title | uppercase }}
+          </h1>
+          <xng-breadcrumb></xng-breadcrumb>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-body animated fadeInRight">
+
+      <div class="col-12 pb-3">
+      
+        <div class="card shadowgreen">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <span>Ricky Roque</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 p-0">
+      
+        <mat-tab-group class="ofertasAcc-tab-group">
+
+            <mat-tab label="Lista de Experiencias">
+                <div class="card shadowblue-matTab mb-3">
+                    <div class="card-body modelo-tabla">
+  
+                        <div class="overflow-auto">
+                          
+                          <table class="table-modelG" mat-table matSort [dataSource]="dataSource">
+                            
+                            <ng-container matColumnDef="nombre" sticky>
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombres</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.nombre }}
+                              </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="identificacion">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Identidad</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.identificacion }}
+                              </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="telefono">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Teléfono</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.telefono }}
+                              </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="email">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Correo electrónico</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.email }}
+                              </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="nacimiento">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Cumpleaños</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.nacimiento }}
+                              </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="ciudad">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Ciudad</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.ciudad }}
+                              </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="accion" stickyEnd>
+                              <th mat-header-cell *matHeaderCellDef>Experiencias</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                <div class="d-inline-block">
+                                  <button class="btn btn-outline-primary" tooltip="Eliminar" data-bs-toggle="tooltip" data-bs-placement="end"
+                                  (click)="ir(1);">
+                                    <i class="far fa-star"></i>
+                                  </button>
+                                </div>
+                              </td>
+                            </ng-container>
+              
+                            <ng-container matColumnDef="noEncontro">
+                              <td class="px-1" mat-footer-cell *matFooterCellDef [attr.colspan]="7">
+                                  <div class="w-100 text-center">
+                                      <span>NO SE ENCONTRARON RESULTADOS...</span>
+                                  </div>
+                              </td>
+                            </ng-container>
+              
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                            <tr [hidden]="(dataSource.data!.length || 0) > 0 || isLoading" mat-footer-row *matFooterRowDef="['noEncontro']"></tr>
+                          </table>
+                          
+                        </div>
+                        
+                        <div *ngIf="isLoading" class="mb-3">
+                          <mat-progress-bar
+                            color="primary"
+                            mode="indeterminate"
+                          ></mat-progress-bar>
+                        </div>
+                        <div>
+                          <mat-paginator
+                            [pageSizeOptions]="[10, 20, 30]"
+                            showFirstLastButtons
+                          ></mat-paginator>
+                        </div>
+                
+                    </div>
+                </div>
+            </mat-tab>
+  
+        </mat-tab-group>
+
+      </div>
+
+    </div>
+</section>

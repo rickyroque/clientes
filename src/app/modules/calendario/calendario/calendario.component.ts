@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Calendario } from 'src/app/models/calendario.model';
 import { Pdf } from 'src/app/models/pdf.model';
@@ -21,13 +22,10 @@ export class CalendarioComponent implements OnInit{
 
   displayedColumns: string[] = [
     'viaje',
-    'fecha1',
-    'fecha2',
-    'fecha3',
-    'fecha4',
-    'fecha5',
+    'fecha',
     'estado',
     'valor',
+    'accion'
   ];
 
   dataSource: MatTableDataSource<Calendario> = new MatTableDataSource<Calendario>([]);
@@ -43,7 +41,7 @@ export class CalendarioComponent implements OnInit{
 
   constructor(
     private paginatorIntl: MatPaginatorIntl, private modalService: BsModalService,
-    private builder: FormBuilder
+    private builder: FormBuilder, private router: Router,
   ) { 
     this.paginatorIntl.itemsPerPageLabel = 'Elementos por página: ';
 
@@ -164,6 +162,10 @@ export class CalendarioComponent implements OnInit{
     });
   }
   
+  ir(id: any) {
+    this.router.navigate(['/home/calendario/calendario-det', id]);
+  }
+
   addClassValidator(inputForm:AbstractControl){
     return {
       'is-valid': inputForm.valid && (inputForm.dirty || inputForm.touched),

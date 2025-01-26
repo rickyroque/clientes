@@ -137,6 +137,85 @@ xng-breadcrumb{
   box-shadow: 0 0 1rem 10px rgb(58 79 123 / 20%) !important;
 }
 
+.shadowblue-matTab {
+  margin-top: 0 !important;
+  border-radius: 0 15px 15px 15px;
+  border: 2px solid rgb(58 79 123 / 20%);
+  box-shadow: 0 .5rem 1rem rgb(58 79 123 / 20%) !important;
+}
+
+.shadowblue-matTabAnidado {
+  margin-top: 1rem !important;
+  border-radius: 15px 15px 15px 15px;
+  border: 2px solid rgb(58 79 123 / 20%);
+  box-shadow: 0 .5rem 1rem rgb(58 79 123 / 20%) !important;
+}
+
+.modelo-tabla {
+  overflow-x: auto;
+
+  .mat-mdc-header-cell:first-child, .mat-mdc-cell:first-child {
+    border-right: 2px solid #e5e8f4 !important;
+    z-index: 3 !important;
+    left: 0px !important;
+  }
+
+  .mat-mdc-header-cell:last-child, .mat-mdc-cell:last-child {
+    border-left: 2px solid #e5e8f4 !important;
+    z-index: 3 !important;
+    right: 0px !important;
+  }
+
+  .mat-mdc-cell:not(:first-child) {
+    margin-left: -2px !important;
+  }
+
+  .table-modelG {
+    //table-layout: fixed;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    width: -webkit-fill-available !important;
+
+    .mdc-data-table__cell{
+      overflow: visible;
+    }
+    
+    th.mat-mdc-header-cell {
+        
+      .mat-sort-header-container {
+        justify-content: center !important;
+        .mat-sort-header-content {
+          display: block !important;
+          width: 100px !important;
+        }
+      }
+    }
+      
+    td.mat-mdc-cell,
+    th.mat-mdc-header-cell {
+      text-align: center !important;
+      padding-left: 0.35rem !important;
+      padding-right: 0.35rem !important;
+    }
+
+    .mat-mdc-cell.mat-column-viaje, .mat-mdc-header-cell.mat-column-viaje,
+    .mat-mdc-cell.mat-column-nombre, .mat-mdc-header-cell.mat-column-nombre,
+    .mat-mdc-cell.mat-column-descripcion, .mat-mdc-header-cell.mat-column-descripcion {
+      right: -1px !important;
+      z-index: 101 !important;
+    }
+
+    .mat-mdc-cell.mat-column-accion, .mat-mdc-header-cell.mat-column-accion,
+    .mat-mdc-cell.mat-column-valor, .mat-mdc-header-cell.mat-column-valor,
+    .mat-mdc-cell.mat-column-balance, .mat-mdc-header-cell.mat-column-balance,
+    .mat-mdc-cell.mat-column-final, .mat-mdc-header-cell.mat-column-final {
+      left: -1px !important;
+      z-index: 101 !important;
+    }
+
+  }
+}
+
 mat-paginator .mat-mdc-text-field-wrapper {
   border: none;
   box-shadow: none;
@@ -145,6 +224,23 @@ mat-paginator .mat-mdc-text-field-wrapper {
 
 mat-paginator .mdc-notched-outline {
   display: none;
+}
+
+.mat-mdc-tab-group {
+  box-shadow: none;
+  > .mat-mdc-tab-header {
+      border: none;
+      .mat-mdc-tab-list .mat-mdc-tab-labels {
+
+        width: fit-content;
+        
+        .mdc-tab.mat-mdc-tab.mdc-tab--active.mdc-tab-indicator--active {
+          background-color: white !important;
+          border-radius: 15px 15px 0 0;
+          border: 2px solid #e5e8f4;
+        }
+      }
+  }
 }
 
 .btn-primary-custom{
@@ -174,4 +270,11 @@ mat-paginator .mdc-notched-outline {
 .form-select-sm option:hover {
   background-color: rgba(58, 79, 123, 1);
   color: #fff; 
+}
+
+.tooltip.show {
+  opacity: 0.9;
+  z-index: 99999999999 !important;
+  position: relative;
+  //transform: translate3d(17px, -50px, 0px) !important; 
 }

@@ -1,0 +1,275 @@
+<section class="section">
+    <div class="section-header text-primary">
+      <div class="row">
+        <div class="col-sm-8">
+          <h1 class="section-title">
+            {{ title | uppercase }}
+          </h1>
+          <xng-breadcrumb></xng-breadcrumb>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-body animated fadeInRight pt-3">
+
+      <div class="col-12 p-0">
+      
+        <mat-tab-group class="mat-tab-group-main">
+
+            <mat-tab label="Balances">
+
+                <div class="card shadowblue-matTabAnidado mb-3">
+
+                    <div class="card-body modelo-tabla">
+    
+                        <div class="overflow-auto">
+                          
+                          <table class="table-modelG" mat-table #sortBalance="matSort" matSort [dataSource]="dataSourceBalance">
+                            
+                            <ng-container matColumnDef="descripcion" sticky>
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.nombre }}
+                              </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="viaje1">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Viaje</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.identificacion }}
+                              </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="mes">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Mes</th>
+                                <td mat-cell class="fila" *matCellDef="let element">
+                                  {{ element.identificacion }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="pasajeros">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Pasajeros</th>
+                                <td mat-cell class="fila" *matCellDef="let element">
+                                  {{ element.identificacion }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="valorU">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Valor Unitario</th>
+                                <td mat-cell class="fila" *matCellDef="let element">
+                                  {{ element.identificacion }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="ingresos">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Ingresos Totales</th>
+                                <td mat-cell class="fila" *matCellDef="let element">
+                                  {{ element.identificacion }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="gastos">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Gastos Totales</th>
+                                <td mat-cell class="fila" *matCellDef="let element">
+                                  {{ element.identificacion }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="final" stickyEnd>
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Ganancias</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.ciudad }}
+                              </td>
+                            </ng-container>
+              
+                            <ng-container matColumnDef="noEncontro">
+                              <td class="px-1" mat-footer-cell *matFooterCellDef [attr.colspan]="8">
+                                  <div class="w-100 text-center">
+                                      <span>NO SE ENCONTRARON RESULTADOS...</span>
+                                  </div>
+                              </td>
+                            </ng-container>
+              
+                            <tr mat-header-row *matHeaderRowDef="displayedColumnsBalance; sticky: true;"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumnsBalance"></tr>
+                            <tr [hidden]="(dataSourceBalance.data!.length || 0) > 0 || isLoading" mat-footer-row *matFooterRowDef="['noEncontro']"></tr>
+                          </table>
+                          
+                        </div>
+                        
+                        <div *ngIf="isLoading" class="mb-3">
+                          <mat-progress-bar
+                            color="primary"
+                            mode="indeterminate"
+                          ></mat-progress-bar>
+                        </div>
+                        <div>
+                          <mat-paginator
+                            #paginatorBalance
+                            [pageSizeOptions]="[10, 20, 30]"
+                            showFirstLastButtons
+                          ></mat-paginator>
+                        </div>
+                
+                    </div>
+                </div>
+
+            </mat-tab>
+
+            <mat-tab label="Ingresos">
+
+                <div class="card shadowblue-matTabAnidado mb-3">
+
+                    <div class="card-body modelo-tabla">
+    
+                        <div class="overflow-auto">
+                          
+                          <table class="table-modelG" mat-table #sortIngresos="matSort" matSort [dataSource]="dataSourceIngresos">
+                            
+                            <ng-container matColumnDef="descripcion" sticky>
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.nombre }}
+                              </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="ingreso">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Ingresos</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.identificacion }}
+                              </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="egreso">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Egresos</th>
+                                <td mat-cell class="fila" *matCellDef="let element">
+                                  {{ element.identificacion }}
+                                </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="final" stickyEnd>
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Ganancias</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.ciudad }}
+                              </td>
+                            </ng-container>
+              
+                            <ng-container matColumnDef="noEncontro">
+                              <td class="px-1" mat-footer-cell *matFooterCellDef [attr.colspan]="4">
+                                  <div class="w-100 text-center">
+                                      <span>NO SE ENCONTRARON RESULTADOS...</span>
+                                  </div>
+                              </td>
+                            </ng-container>
+              
+                            <tr mat-header-row *matHeaderRowDef="displayedColumnsIngresos; sticky: true;"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumnsIngresos"></tr>
+                            <tr [hidden]="(dataSourceIngresos.data!.length || 0) > 0 || isLoading" mat-footer-row *matFooterRowDef="['noEncontro']"></tr>
+                          </table>
+                          
+                        </div>
+                        
+                        <div *ngIf="isLoading" class="mb-3">
+                          <mat-progress-bar
+                            color="primary"
+                            mode="indeterminate"
+                          ></mat-progress-bar>
+                        </div>
+                        <div>
+                          <mat-paginator
+                            #paginatorIngresos
+                            [pageSizeOptions]="[10, 20, 30]"
+                            showFirstLastButtons
+                          ></mat-paginator>
+                        </div>
+                
+                    </div>
+                </div>
+
+            </mat-tab>
+
+            <mat-tab label="Saldos">
+
+                <div class="card shadowblue-matTabAnidado mb-3">
+
+                    <div class="card-body modelo-tabla">
+    
+                        <div class="overflow-auto">
+                          
+                          <table class="table-modelG" mat-table #sortSaldos="matSort" matSort [dataSource]="dataSourceSaldos">
+                            
+                            <ng-container matColumnDef="descripcion" sticky>
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Mes</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.nombre }}
+                              </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="pacifico">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Pacifico</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.identificacion }}
+                              </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="pichincha">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Pichincha</th>
+                                <td mat-cell class="fila" *matCellDef="let element">
+                                  {{ element.identificacion }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="total">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Saldo Total</th>
+                                <td mat-cell class="fila" *matCellDef="let element">
+                                  {{ element.identificacion }}
+                                </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="final" stickyEnd>
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Anio</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.ciudad }}
+                              </td>
+                            </ng-container>
+              
+                            <ng-container matColumnDef="noEncontro">
+                              <td class="px-1" mat-footer-cell *matFooterCellDef [attr.colspan]="5">
+                                  <div class="w-100 text-center">
+                                      <span>NO SE ENCONTRARON RESULTADOS...</span>
+                                  </div>
+                              </td>
+                            </ng-container>
+              
+                            <tr mat-header-row *matHeaderRowDef="displayedColumnsSaldos; sticky: true;"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumnsSaldos"></tr>
+                            <tr [hidden]="(dataSourceSaldos.data!.length || 0) > 0 || isLoading" mat-footer-row *matFooterRowDef="['noEncontro']"></tr>
+                          </table>
+                          
+                        </div>
+                        
+                        <div *ngIf="isLoading" class="mb-3">
+                          <mat-progress-bar
+                            color="primary"
+                            mode="indeterminate"
+                          ></mat-progress-bar>
+                        </div>
+                        <div>
+                          <mat-paginator
+                            #paginatorSaldos
+                            [pageSizeOptions]="[10, 20, 30]"
+                            showFirstLastButtons
+                          ></mat-paginator>
+                        </div>
+                
+                    </div>
+                </div>
+
+            </mat-tab>
+  
+        </mat-tab-group>
+
+      </div>
+
+    </div>
+</section>

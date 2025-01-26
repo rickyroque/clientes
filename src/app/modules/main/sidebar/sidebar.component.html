@@ -11,7 +11,10 @@
    
         <ul>
           <li>
-            <a [routerLink]="['/home/calendario']"><i class="far fa-calendar-alt"></i><span>Calendario</span></a> 
+            <a [routerLink]="['/home/ordenes']"><i class="fas fa-plane-departure"></i><span class="">Dashboard</span></a>
+          </li>
+          <li>
+            <a [routerLink]="['/home/calendario']"><i class="far fa-calendar-alt"></i><span>Calendario de Viajes</span></a> 
             <!--<ul class="nav-flyout">
               <li>
                 <a href="#">Opcion1</a>
@@ -25,10 +28,13 @@
             </ul>-->
           </li>
           <li>
-            <a [routerLink]="['/home/ordenes']"><i class="fa-solid fa-folder-tree"></i> <span class="">Ordenes</span></a>
+            <a [routerLink]="['/home/experiencias']"><i class="far fa-star"></i><span class="">Experiencias</span></a>
           </li>
           <li>
-            <a [routerLink]="['/home/configuracion']"><i class="fa-solid fa-gears"></i> <span class="">Configuracion</span></a>
+            <a [routerLink]="['/home/clientes']"><i class="fas fa-users"></i><span class="">Clientes</span></a>
+          </li>
+          <li>
+            <a [routerLink]="['/home/contabilidad']"><i class="fas fa-book"></i><span class="">Contabilidad</span></a>
           </li>
           <li>
             <a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i> <span class="">Salir</span></a>

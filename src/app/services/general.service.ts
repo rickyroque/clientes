@@ -1,19 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GeneralService {
   
-  private apiUrl = 'https://www.leadschat.app/customers/api/chatgpt/'; 
+  url = environment.apiHost;
 
-  constructor(private http: HttpClient) {}
+  reqHeader = new HttpHeaders()
+    .set('Content-Type', 'text/plain; charset=utf-8')
+    .set('Accept', 'text/plain');
+  
+  constructor(
+    private http: HttpClient,
+  ) {
+  }
 
-  sendMessage(message: string): Observable<any> {
-    const payload = { message }; 
-    return this.http.post(this.apiUrl, payload);
+  useService(tmp: any) {
+    return this.http.post(`${this.url}JBoxService.php`, JSON.stringify(tmp), {
+      headers: this.reqHeader,
+    });
   }
 
 }

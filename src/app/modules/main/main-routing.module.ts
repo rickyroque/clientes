@@ -14,6 +14,21 @@ const routes: Routes = [
             },
 
             {
+                path: 'clientes',
+                loadChildren: () => import('../clientes/clientes.module').then(m => m.ClientesModule),
+            },
+
+            {
+                path: 'experiencias',
+                loadChildren: () => import('../experiencias/experiencias.module').then(m => m.ExperienciasModule),
+            },
+
+            {
+                path: 'contabilidad',
+                loadChildren: () => import('../contabilidad/contabilidad.module').then(m => m.ContabilidadModule),
+            },
+
+            {
               path: 'ordenes',
               loadChildren: () => import('../ordenes/ordenes.module').then(m => m.OrdenesModule),
             },
