@@ -55,3 +55,17 @@
     }
 
 }
+
+.preferido-chip {
+  background-color: #3DA888 !important; /* Color para el chip preferido */
+  color: white !important;
+
+  mat-icon{
+    color: white !important;
+  }
+  
+  .mat-mdc-chip-action-label{
+    color: white !important;
+  }
+  
+}

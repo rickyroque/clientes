@@ -11,6 +11,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { LaddaModule } from 'angular2-ladda';
 import { AppBootstrapModule } from 'src/app/app-bootstrap.module';
 import { CalendarioDetComponent } from './calendario/calendario-det/calendario-det.component';
+import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -28,8 +29,11 @@ import { CalendarioDetComponent } from './calendario/calendario-det/calendario-d
     AppBootstrapModule,
     SharedModule,
     LaddaModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
   ],
   providers: [
+    provideEnvironmentNgxMask()
   ],
 })
 export class CalendarioModule { }

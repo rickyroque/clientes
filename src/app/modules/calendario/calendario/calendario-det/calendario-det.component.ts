@@ -29,8 +29,13 @@ export class CalendarioDetComponent implements OnInit{
     'abono',
     'saldo',
     'seleccion',
-    'pareja',
     'balance',
+  ];
+
+  displayedColumnsPasajerosMovil: string[] = [
+    'nombre',
+    'abono',
+    'saldo',
   ];
 
   listPasajeros: Clientes[] = [];
@@ -43,7 +48,6 @@ export class CalendarioDetComponent implements OnInit{
 
   displayedColumnsGastosF: string[] = [
     'descripcion',
-    'valor',
     'final',
   ];
 
@@ -58,6 +62,7 @@ export class CalendarioDetComponent implements OnInit{
     'guia',
     'ayudante',
     'chofer',
+    'extra',
     'final',
   ];
 
@@ -69,7 +74,6 @@ export class CalendarioDetComponent implements OnInit{
 
   displayedColumnsGastosXP: string[] = [
     'descripcion',
-    'valorU',
     'final',
   ];
 
@@ -126,7 +130,35 @@ export class CalendarioDetComponent implements OnInit{
   isLoading!: boolean;
   loadDepartamento : boolean = false;
 
-  formClientes: FormGroup;
+  formPasajeros: FormGroup;
+  formPPGF: FormGroup;
+  formPPEMV: FormGroup;
+  formPPGPP: FormGroup;
+  formPRGG: FormGroup;
+
+  //modales
+  @ViewChild('mdlPasajero', { static: true }) public mdlPasajero!: TemplateRef<any>;
+  modalRefPasajero!: BsModalRef;
+
+  @ViewChild('mdlPPGF', { static: true }) public mdlPPGF!: TemplateRef<any>;
+  modalRefPPGF!: BsModalRef;
+
+  @ViewChild('mdlPPEMV', { static: true }) public mdlPPEMV!: TemplateRef<any>;
+  modalRefPPEMV!: BsModalRef;
+
+  @ViewChild('mdlPPGPP', { static: true }) public mdlPPGPP!: TemplateRef<any>;
+  modalRefPPGPP!: BsModalRef;
+
+  @ViewChild('mdlPRGG', { static: true }) public mdlPRGG!: TemplateRef<any>;
+  modalRefPRGG!: BsModalRef;
+
+  listEjemplo: Clientes[] = [
+    { id: 1, nombre: 'Juan Pérez' },
+    { id: 2, nombre: 'María García' },
+    { id: 3, nombre: 'Carlos López' },
+    { id: 4, nombre: 'Ana Martínez' },
+    { id: 5, nombre: 'Luis Rodríguez' }
+  ];
 
   constructor(
     private paginatorIntl: MatPaginatorIntl, private modalService: BsModalService,
@@ -134,11 +166,38 @@ export class CalendarioDetComponent implements OnInit{
   ) { 
     this.paginatorIntl.itemsPerPageLabel = 'Elementos por página: ';
 
-    this.formClientes = this.builder.group({
-      viaje: ['', [Validators.required]],
-      fecha: ['', [Validators.required]],
-      estado: ['', [Validators.required]],
+    this.formPasajeros = this.builder.group({
+      color: ['#ffffff', [Validators.required]],
+      lista: [1, [Validators.required]],
+      abono: ['', [Validators.required]],
+      banco: ['', [Validators.required]],
+    });
+
+    this.formPPGF = this.builder.group({
+      descripcion: ['', [Validators.required]],
       valor: ['', [Validators.required]],
+    });
+
+    this.formPPEMV = this.builder.group({
+      descripcion: ['', [Validators.required]],
+      guia: ['', [Validators.required]],
+      ayudante: ['', [Validators.required]],
+      chofer: ['', [Validators.required]],
+      extra: ['', [Validators.required]],
+      total: ['', [Validators.required]],
+    });
+
+    this.formPPGPP = this.builder.group({
+      descripcion: ['', [Validators.required]],
+      valor: ['', [Validators.required]],
+    });
+
+    this.formPRGG = this.builder.group({
+      descripcion: ['', [Validators.required]],
+      pasajeros: ['', [Validators.required]],
+      valor: ['', [Validators.required]],
+      descuento: ['', [Validators.required]],
+      total: ['', [Validators.required]],
     });
   }
 
@@ -149,18 +208,18 @@ export class CalendarioDetComponent implements OnInit{
   cargarCalendario() {
     
     this.listPasajeros = [
-      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala' },
-      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala' },
-      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala' },
-      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala' },
-      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala' },
-      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala' },
-      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala' },
-      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala' },
-      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala' },
-      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala' },
-      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala' },
-      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala' },
+      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala', saldo: '50' },
+      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala', saldo: '50' },
+      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala', saldo: '50' },
+      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala', saldo: '50' },
+      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala', saldo: '50' },
+      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala', saldo: '50' },
+      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala', saldo: '50' },
+      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala', saldo: '50' },
+      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala', saldo: '50' },
+      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala', saldo: '50' },
+      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala', saldo: '50' },
+      { nombre: 'Ricky Roque', identificacion: '0750484578', telefono: '+593 96 970 9838', email: 'rickyroque710@gmail.com', nacimiento: '07-10-1999', ciudad: 'Machala', saldo: '50' },
       
     ].map((el) => new Clientes(el));
 
@@ -196,6 +255,127 @@ export class CalendarioDetComponent implements OnInit{
 
   ir(id: any) {
     
+  }
+
+  //modales
+
+  openModalPasajero(template: TemplateRef<any>) {
+    this.modalRefPasajero = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'modal-supremo' })
+    );
+  }
+
+  public openPasajero() {
+    this.openModalPasajero(this.mdlPasajero);
+  }
+
+  openModalPPGF(template: TemplateRef<any>) {
+    this.modalRefPPGF = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'modal-supremo' })
+    );
+  }
+
+  public openPPGF() {
+    this.openModalPPGF(this.mdlPPGF);
+  }
+
+  openModalPPEMV(template: TemplateRef<any>) {
+    this.modalRefPPEMV = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'modal-supremo' })
+    );
+  }
+
+  public openPPEMV() {
+    this.openModalPPEMV(this.mdlPPEMV);
+  }
+
+  openModalPPGPP(template: TemplateRef<any>) {
+    this.modalRefPPGPP = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'modal-supremo' })
+    );
+  }
+
+  public openPPGPP() {
+    this.openModalPPGPP(this.mdlPPGPP);
+  }
+
+  openModalPRGG(template: TemplateRef<any>) {
+    this.modalRefPRGG = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'modal-supremo' })
+    );
+  }
+
+  public openPRGG() {
+    this.openModalPRGG(this.mdlPRGG);
+  }
+
+  public pasajero(){
+    if (this.formPasajeros.valid) {
+      // Obtén el valor del color seleccionado
+      const colorSeleccionado = this.formPasajeros.get('color')?.value;
+      console.log('Color seleccionado:', colorSeleccionado);
+      // Aquí puedes hacer lo que necesites con el valor del color
+    } else {
+      console.log('Por favor, selecciona un color.');
+    }
+  }
+
+  seleccionados: Clientes[] = [];
+
+  agregar() {
+    const selectedId = Number(this.formPasajeros.get('lista')?.value); // Convertir a número
+    console.log('ID seleccionado:', selectedId);
+  
+    if (!selectedId) {
+      console.log('⚠️ No se ha seleccionado un cliente válido.');
+      return;
+    }
+  
+    const cliente = this.listEjemplo.find(c => c.id === selectedId);
+    console.log('Cliente encontrado:', cliente);
+  
+    if (!cliente) {
+      console.log('⚠️ No se encontró el cliente en listEjemplo.');
+      return;
+    }
+  
+    const existe = this.seleccionados.some(c => c.id === cliente.id);
+    console.log('¿El cliente ya está agregado?', existe);
+  
+    if (!existe) {
+      this.seleccionados = [...this.seleccionados, cliente]; // 🔹 FORZAR DETECCIÓN DE CAMBIO
+      console.log('Cliente agregado:', cliente);
+    } else {
+      console.log('⚠️ Cliente ya existe en la lista.');
+    }
+
+    console.log(this.seleccionados);
+  }
+  
+
+  eliminar(cliente: Clientes) {
+    this.seleccionados = this.seleccionados.filter(c => c.id !== cliente.id);
+  }
+
+  preferido: Clientes | null = null; // Cliente preferido
+
+  marcarPreferido(cliente: Clientes) {
+    console.log('entra');
+    if (this.preferido?.id === cliente.id) {
+      // Si el cliente ya es preferido, lo desmarcamos
+      this.preferido = null;
+      console.log('entra1');
+    } else {
+      // Marcar este cliente como preferido y desmarcar el anterior
+      this.preferido = cliente;
+      console.log('entra2');
+    }
+    console.log(this.preferido);
   }
 
   generarPDF() {

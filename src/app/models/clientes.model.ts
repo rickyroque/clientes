@@ -2,12 +2,14 @@ import { VariablesGlobales } from "./variablesGlobales.model";
 
 export class Clientes {
 
+  id!: number;
   nombre: any;
-  identificacion: any;
-  telefono: any;
-  email: any;
-  nacimiento: any;
-  ciudad: any
+  identificacion?: any;
+  telefono?: any;
+  email?: any;
+  nacimiento?: any;
+  ciudad?: any;
+  saldo?: number;
 
   constructor(v: any) {
 

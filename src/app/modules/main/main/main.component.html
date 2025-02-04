@@ -1,7 +1,55 @@
-<button class="menu-toggle d-md-none" (click)="toggleMenu()" [ngClass]="{'shifted': menuVisible}"><i class="fa-solid fa-bars"></i></button>
+<!--<button class="menu-toggle d-md-none" (click)="toggleMenu()" [ngClass]="{'shifted': menuVisible}"><i class="fa-solid fa-bars"></i></button>-->
 
-<div id="wrapper" class="wrapper">
-    <app-sidebar [menuVisible]="menuVisible"></app-sidebar>
+<nav class="navbar navbar-expand-lg navbar-dark py-4 border border-top-0 mb-4">
+ 
+    <div class="container d-flex ">
+      
+        <a class="navbar-brand pb-2" [routerLink]="['/']">
+          <img class="logo-dark" src="assets/img/logoDB.png" alt="Portafolio - Logo" height="50">
+        </a>
+        
+        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent"
+          data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+       
+        <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto w-100 justify-content-between">
+            <li class="nav-item w-100 text-center pb-2 pt-2">
+                <button class="btn btn-primary btn-barraMenu" (click)="irCalendario()">
+                    <i class="far fa-calendar-alt"></i><span>Calendario de Viajes</span>
+                </button>
+            </li>
+            <li class="nav-item w-100 text-center pb-2 pt-2">
+                <button class="btn btn-primary btn-barraMenu" (click)="irExperiencias()">
+                    <i class="far fa-star"></i><span>Experiencias</span>
+                </button>
+            </li>
+            <li class="nav-item w-100 text-center pb-2 pt-2">
+                <button class="btn btn-primary btn-barraMenu" (click)="irClientes()">
+                    <i class="fas fa-users"></i><span>Lista de Clientes</span>
+                </button>
+            </li>
+            <li class="nav-item w-100 text-center pb-2 pt-2">
+                <button class="btn btn-primary btn-barraMenu" (click)="irContabilidad()">
+                    <i class="fas fa-book"></i><span>Contabilidad</span>
+                </button>
+            </li>
+            <li class="nav-item w-100 text-center pb-2 pt-2 ">
+                <button class="btn btn-primary btn-barraMenu" (click)="irSalir()">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i><span>Cerrar Sesion</span>
+                </button>
+            </li>
+          </ul>
+
+        </div>
+        
+      </div>
+    
+</nav>
+
+<div id="wrapper" class="wrapper p-3">
+    <!--<app-sidebar [menuVisible]="menuVisible"></app-sidebar>-->
 
     <div *ngIf="menuVisible" (click)="toggleMenu()" class="content-wrapper2 w-100" [ngClass]="{'shifted': menuVisible}"></div>
 

@@ -22,7 +22,7 @@
                   class="btn btn-primary btn-primary-custom ladda-button"
                   [ladda]="loadDepartamento" data-style="slide-down"
                   [disabled]="isLoading"
-                  (click)="generarPDF()"
+                  (click)="open()"
                 >
                   Crear  <i class="fas fa-plus"></i>
                 </button>
@@ -56,13 +56,6 @@
                   </td>
                 </ng-container>
 
-                <ng-container matColumnDef="telefono">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Archivo y Multimedia</th>
-                  <td mat-cell class="fila" *matCellDef="let element">
-                    {{ element.telefono }}
-                  </td>
-                </ng-container>
-
                 <ng-container matColumnDef="email">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>Costo</th>
                   <td mat-cell class="fila" *matCellDef="let element">
@@ -70,12 +63,31 @@
                   </td>
                 </ng-container>
 
-                <ng-container matColumnDef="accion" stickyEnd>
-                  <th mat-header-cell *matHeaderCellDef>Itinerario</th>
+                <ng-container matColumnDef="pasajeros">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>No. Pasajeros</th>
                   <td mat-cell class="fila" *matCellDef="let element">
-                    <button class="btn btn-outline-primary" tooltip="Ver Experiencias" data-bs-toggle="tooltip">
-                      <i class="far fa-star"></i>
-                    </button>
+                    {{ element.email }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="numero">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>No. Viajes</th>
+                  <td mat-cell class="fila" *matCellDef="let element">
+                    {{ element.email }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="accion" stickyEnd>
+                  <th mat-header-cell *matHeaderCellDef>Detalle</th>
+                  <td mat-cell class="fila" *matCellDef="let element">
+                    <div class="d-inline-block">
+                      <button class="btn btn-outline-primary m-2" tooltip="Ver Viajes" data-bs-toggle="tooltip" (click)="ir(1);">
+                        <i class="far fa-star"></i>
+                      </button>
+                      <button class="btn btn-outline-primary" tooltip="Ver Documento" data-bs-toggle="tooltip">
+                        <i class="fas fa-file-pdf"></i>
+                      </button>
+                    </div>
                   </td>
                 </ng-container>
   
@@ -115,7 +127,7 @@
     </div>
 </section>
 
-<ng-template #mdlEjemplo>
+<ng-template #mdlExperiencia>
   <div class="modal-header p-0">
     <div class="row">
       <div class="col-2 text-center align-content-center">
@@ -123,7 +135,7 @@
       </div>
       <div class="col-8">
         <h4 class="modal-title pull-left" style="font-size: 14px">
-          <span>Ejemplo</span>
+          <span>Agrega Experiencia</span>
         </h4>
       </div>
       <div class="col-2 text-center align-content-center">
@@ -141,55 +153,57 @@
   </div>
   <div class="modal-body">
     <div class="card">
-      <form [formGroup]="formClientes" class="row justify-content-center">
+      <form [formGroup]="formExperiencia" class="row justify-content-center">
 
         <div class="col-12 pb-3">
           <div class="row text-center align-items-center ">
-            <label class="col-sm-3 text-justify">Viaje:</label>
+            <label class="col-sm-3 text-justify">Nombre:</label>
             <div class="col-sm-9">
-              <select
-                formControlName="viaje"
-                class="form-select form-select-sm"
-              >
-                <option value="" selected>TODOS</option>
-                <option value="1">nombre</option>
-              </select>
-              <div class="invalid-feedback">
-                Debe ingresar <b>Viaje</b>.
-              </div>
+              <input type="text"
+              class="form-control" formControlName="nombre" placeholder="Ingrese Nombre de la Experiencia">
             </div>
           </div>
         </div>
 
         <div class="col-12 pb-3">
           <div class="row text-center align-items-center ">
-            <label class="col-sm-3 text-justify">Fecha:</label>
+            <label class="col-sm-3 text-justify">Costo:</label>
             <div class="col-sm-9">
-              <div class="input-group date">
-                <input
-                    type="text"
-                    placeholder="Rango de Fecha"
-                    #dp="bsDaterangepicker"
-                    class="form-control"
-                    formControlName="fecha"
-                    bsDaterangepicker
-                    [bsConfig]="{
-                    isAnimated: true,
-                    containerClass: 'theme-dark-blue'
-                    }"
-                />
-                <div class="input-group-append">
-                    <span
-                    [attr.aria-expanded]="dp.isOpen"
-                    (click)="dp.toggle()"
-                    class="input-group-text"
-                    ><i class="fa fa-calendar"></i
-                    ></span>
-                </div>
-              </div>
+              <input type="text" onlyNumbers mask="separator.2" thousandSeparator=","
+              class="form-control" formControlName="costo" placeholder="0.00">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Archivos:</label>
+            <div class="col-sm-9">
+              <input 
+                formControlName="file" #file 
+                (change)="processFile(file)" type="file" accept=".jpeg, .jpg, .png, .pdf, .xls, .xlsx" 
+                class="form-control" id="archivo" placeholder="col-form-label"
+                [ngClass]="{'is-valid': formExperiencia.get('url')!.valid, 'is-invalid': formExperiencia.get('url')!.invalid}"
+              >
+              <span *ngIf="isSavingFile" class="input-group-text" id="basic-addon1"><i class="fas fa-spinner fa-pulse"></i></span>
               <div class="invalid-feedback">
-                Debe ingresar <b>Rango de fecha</b>.
+                  Debe ingresar un <b>Archivo válido.</b>.
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-5">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Estado:</label>
+            <div class="col-sm-9" style="text-align: justify !important;">
+              <mat-radio-group color="primary" formControlName="estado">
+                <mat-radio-button [value]="true" class="me-4"
+                  >Activo</mat-radio-button>
+                <mat-radio-button [value]="false"
+                  >Inactivo</mat-radio-button
+                > </mat-radio-group>
+              <br />
             </div>
           </div>
         </div>

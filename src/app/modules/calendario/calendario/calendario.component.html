@@ -23,7 +23,7 @@
                   class="btn btn-primary btn-primary-custom ladda-button"
                   [ladda]="loadDepartamento" data-style="slide-down"
                   [disabled]="isLoading"
-                  (click)="generarPDF()"
+                  (click)="open()"
                 >
                   Crear  <i class="fas fa-plus"></i>
                 </button>
@@ -118,7 +118,7 @@
     
 </section>
 
-<ng-template #mdlEjemplo>
+<ng-template #mdlCalendario>
   <div class="modal-header p-0">
     <div class="row">
       <div class="col-2 text-center align-content-center">
@@ -126,7 +126,7 @@
       </div>
       <div class="col-8">
         <h4 class="modal-title pull-left" style="font-size: 14px">
-          <span>Ejemplo</span>
+          <span>Crear Viaje</span>
         </h4>
       </div>
       <div class="col-2 text-center align-content-center">
@@ -148,7 +148,7 @@
 
         <div class="col-12 pb-3">
           <div class="row text-center align-items-center ">
-            <label class="col-sm-3 text-justify">Viaje:</label>
+            <label class="col-sm-3 text-justify">Experiencia:</label>
             <div class="col-sm-9">
               <select
                 formControlName="viaje"
@@ -193,6 +193,35 @@
               <div class="invalid-feedback">
                 Debe ingresar <b>Rango de fecha</b>.
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Estado:</label>
+            <div class="col-sm-9">
+              <select
+                formControlName="viaje"
+                class="form-select form-select-sm"
+              >
+                <option value="" selected>TODOS</option>
+                <option value="1">Estado 1</option>
+                <option value="1">Estado 2</option>
+              </select>
+              <div class="invalid-feedback">
+                Debe ingresar <b>Viaje</b>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Valor:</label>
+            <div class="col-sm-9">
+              <input type="text" onlyNumbers mask="separator.2" thousandSeparator=","
+              class="form-control" formControlName="valor" placeholder="0.00">
             </div>
           </div>
         </div>

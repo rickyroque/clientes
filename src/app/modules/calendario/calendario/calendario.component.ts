@@ -17,7 +17,7 @@ export class CalendarioComponent implements OnInit{
 
   title = 'Calendario de Viajes';
 
-  @ViewChild('mdlEjemplo', { static: true }) public mdlEjemplo!: TemplateRef<any>;
+  @ViewChild('mdlCalendario', { static: true }) public mdlCalendario!: TemplateRef<any>;
   modalRef!: BsModalRef;
 
   displayedColumns: string[] = [
@@ -129,7 +129,7 @@ export class CalendarioComponent implements OnInit{
           
   }
 
-  openModalDepartamento(template: TemplateRef<any>) {
+  openModalCalendario(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(
       template,
       Object.assign({}, { class: 'modal-supremo' })
@@ -137,7 +137,7 @@ export class CalendarioComponent implements OnInit{
   }
 
   public open() {
-    this.openModalDepartamento(this.mdlEjemplo);
+    this.openModalCalendario(this.mdlCalendario);
   }
 
   generarPDF() {

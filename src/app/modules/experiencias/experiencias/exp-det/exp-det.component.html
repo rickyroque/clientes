@@ -18,7 +18,7 @@
           <div class="card-body">
             <div class="row">
               <div class="col-12">
-                <span>Ricky Roque</span>
+                <span>Mindo Extremo</span>
               </div>
             </div>
           </div>
@@ -29,7 +29,7 @@
       
         <mat-tab-group class="ofertasAcc-tab-group">
 
-            <mat-tab label="Lista de Experiencias">
+            <mat-tab label="Lista de Viajes">
                 <div class="card shadowblue-matTab mb-3">
                     <div class="card-body modelo-tabla">
   
@@ -38,21 +38,14 @@
                           <table class="table-modelG" mat-table matSort [dataSource]="dataSource">
                             
                             <ng-container matColumnDef="nombre" sticky>
-                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Experiencia</th>
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
                               <td mat-cell class="fila" *matCellDef="let element">
                                 {{ element.nombre }}
                               </td>
                             </ng-container>
             
-                            <ng-container matColumnDef="identificacion">
-                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
-                              <td mat-cell class="fila" *matCellDef="let element">
-                                {{ element.identificacion }}
-                              </td>
-                            </ng-container>
-
-                            <ng-container matColumnDef="observacion">
-                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Observacion</th>
+                            <ng-container matColumnDef="pasajeros">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Pasajeros</th>
                               <td mat-cell class="fila" *matCellDef="let element">
                                 {{ element.identificacion }}
                               </td>
@@ -62,7 +55,7 @@
                               <th mat-header-cell *matHeaderCellDef>Detalle</th>
                               <td mat-cell class="fila" *matCellDef="let element">
                                 <div class="d-inline-block">
-                                  <button class="btn btn-outline-primary" tooltip="Ver Viaje" data-bs-toggle="tooltip" data-bs-placement="end"
+                                  <button class="btn btn-outline-primary" tooltip="Ir al viaje" data-bs-toggle="tooltip" data-bs-placement="end"
                                   (click)="ir(1);">
                                     <i class="far fa-star"></i>
                                   </button>

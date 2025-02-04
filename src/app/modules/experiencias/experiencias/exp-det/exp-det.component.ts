@@ -7,26 +7,20 @@ import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Clientes } from 'src/app/models/clientes.model';
 import { Pdf } from 'src/app/models/pdf.model';
-import { GeneralService } from 'src/app/services/general.service';
 
 @Component({
-  selector: 'app-clientes',
-  templateUrl: './clientes.component.html',
-  styleUrls: ['./clientes.component.scss']
+  selector: 'app-exp-det',
+  templateUrl: './exp-det.component.html',
+  styleUrls: ['./exp-det.component.scss']
 })
-export class ClientesComponent implements OnInit{
-  title = 'Listado de Clientes';
+export class ExpDetComponent {
 
-  @ViewChild('mdlCliente', { static: true }) public mdlCliente!: TemplateRef<any>;
-  modalRef!: BsModalRef;
-
+  title = 'Viajes de la Experiencia';
+  
+  
   displayedColumns: string[] = [
     'nombre',
-    'identificacion',
-    'telefono',
-    'email',
-    'nacimiento',
-    'ciudad',
+    'pasajeros',
     'accion',
   ];
 
@@ -44,19 +38,14 @@ export class ClientesComponent implements OnInit{
   constructor(
     private paginatorIntl: MatPaginatorIntl, private modalService: BsModalService,
     private builder: FormBuilder, private router: Router,
-    private generalService: GeneralService,
   ) { 
     this.paginatorIntl.itemsPerPageLabel = 'Elementos por página: ';
 
     this.formClientes = this.builder.group({
-
-      nombre: ['', [Validators.required]],
-      identificacion: ['', [Validators.required]],
-      telefono: ['', [Validators.required]],
-      correo: ['', [Validators.required]],
-      nacimiento: ['', [Validators.required]],
-      ciudad: ['', [Validators.required]],
-      
+      viaje: ['', [Validators.required]],
+      fecha: ['', [Validators.required]],
+      estado: ['', [Validators.required]],
+      valor: ['', [Validators.required]],
     });
   }
 
@@ -82,28 +71,8 @@ export class ClientesComponent implements OnInit{
           
   }
 
-  cargarInfoAcc() {
-
-    this.generalService
-      .useService(Clientes.getServicio())
-      .subscribe((data: any) => {
-        
-      });
-  }
-
-  openModalClientes(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(
-      template,
-      Object.assign({}, { class: 'modal-supremo' })
-    );
-  }
-
-  public open() {
-    this.openModalClientes(this.mdlCliente);
-  }
-
   ir(id: any) {
-    this.router.navigate(['/home/clientes/cliente-exp', id]);
+    this.router.navigate(['/home/calendario/calendario-det', id]);
   }
 
   generarPDF() {
@@ -134,4 +103,5 @@ export class ClientesComponent implements OnInit{
       'is-invalid': inputForm.invalid && (inputForm.dirty || inputForm.touched)
     }
   }
+
 }

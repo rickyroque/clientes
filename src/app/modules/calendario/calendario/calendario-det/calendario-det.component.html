@@ -20,9 +20,138 @@
                 
               <div class="card shadowblue-matTabAnidado mb-3">
 
+                <div class="card-header">
+
+                  <div class="row align-items-center">
+
+                    <div class="col-8 d-none d-md-block">
+                      <div class="row">
+                        <div class="col-5 custom-ancho">
+                          <div class="card shadowContador">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-5 text-center custom-ancho">
+                                  <span> <i class="fas fa-snowboarding"></i> Pasajeros</span>
+                                </div>
+                                <div class="col-7 text-center custom-ancho">
+                                  <span>999</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-5 custom-ancho">
+                          <div class="card shadowContador">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-5 text-center custom-ancho">
+                                  <span><i class="fas fa-wallet"></i> Suma</span>
+                                </div>
+                                <div class="col-7 text-center custom-ancho">
+                                  <span>$ 5000.00</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-2 text-end d-none d-md-block">
+                      <div class="btn-group" role="group">
+                        <button
+                          tooltip="Exportar PDF"
+                          class="btn btn-primary float-right ladda-button"
+                          (click)="generarPDF()"
+                        >
+                          <i class="fas fa-file-pdf"></i>
+                        </button>
+                        <button
+                          tooltip="Exportar EXCEL"
+                          class="btn btn-primary float-right ladda-button"
+                        >
+                          <i class="fas fa-file-excel"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-2 text-end d-none d-md-block">
+                      <button
+                        class="btn btn-primary btn-primary-custom ladda-button"
+                        [ladda]="loadDepartamento" data-style="slide-down"
+                        [disabled]="isLoading"
+                        (click)="openPasajero()"
+                      >
+                        Crear  <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+
+                    <!--Para Movil-->
+
+                    <div class="col-12 d-block d-md-none">
+                      <div class="row">
+                        <div class="col-6 pb-2">
+                          <div class="card shadowContador">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-12 text-center">
+                                  <span> <i class="fas fa-snowboarding"></i> Pasajeros</span>
+                                </div>
+                                <div class="col-12 text-center">
+                                  <span>999</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-6 pb-2">
+                          <div class="card shadowContador">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-12 text-center">
+                                  <span><i class="fas fa-wallet"></i> Suma</span>
+                                </div>
+                                <div class="col-12 text-center">
+                                  <span>$ 5000.00</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 text-center d-block d-md-none">
+                      <div class="btn-group" role="group">
+                        <button
+                          tooltip="Exportar PDF"
+                          class="btn btn-primary float-right ladda-button"
+                        >
+                          <i class="fas fa-file-pdf"></i>
+                        </button>
+                        <button
+                          tooltip="Exportar EXCEL"
+                          class="btn btn-primary float-right ladda-button"
+                        >
+                          <i class="fas fa-file-excel"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-6 text-center d-block d-md-none">
+                      <button
+                        class="btn btn-primary btn-primary-custom ladda-button"
+                        [ladda]="loadDepartamento" data-style="slide-down"
+                        [disabled]="isLoading"
+                        (click)="openPasajero()"
+                      >
+                        Crear  <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+
+                  </div>
+
+                </div>
+
                 <div class="card-body modelo-tabla">
 
-                    <div class="overflow-auto">
+                    <div class="overflow-auto d-none d-md-block">
                       
                       <table class="table-modelG" mat-table #sortPasajeros="matSort" matSort [dataSource]="dataSourcePasajeros">
                         
@@ -61,15 +190,8 @@
                           </td>
                         </ng-container>
         
-                        <ng-container matColumnDef="pareja">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Parejas</th>
-                          <td mat-cell class="fila" *matCellDef="let element">
-                            {{ element.ciudad }}
-                          </td>
-                        </ng-container>
-        
                         <ng-container matColumnDef="balance" stickyEnd>
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Balance</th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Pareja</th>
                           <td mat-cell class="fila" *matCellDef="let element">
                             {{ element.ciudad }}
                           </td>
@@ -90,6 +212,48 @@
                       
                     </div>
                     
+                    <!--Para Movil-->
+
+                    <div class="overflow-auto d-block d-md-none">
+                      
+                      <table class="table-modelG" mat-table #sortPasajeros="matSort" matSort [dataSource]="dataSourcePasajeros">
+                        
+                        <ng-container matColumnDef="nombre" sticky>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombres</th>
+                          <td mat-cell class="fila" *matCellDef="let element">
+                            {{ element.nombre }}
+                          </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="abono">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Abono</th>
+                          <td mat-cell class="fila" *matCellDef="let element">
+                            {{ element.saldo }}
+                          </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="saldo" stickyEnd>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Saldo</th>
+                          <td mat-cell class="fila" *matCellDef="let element">
+                            {{ element.saldo }}
+                          </td>
+                        </ng-container>
+          
+                        <ng-container matColumnDef="noEncontro">
+                          <td class="px-1" mat-footer-cell *matFooterCellDef [attr.colspan]="3">
+                              <div class="w-100 text-center">
+                                  <span>NO SE ENCONTRARON RESULTADOS...</span>
+                              </div>
+                          </td>
+                        </ng-container>
+          
+                        <tr mat-header-row *matHeaderRowDef="displayedColumnsPasajerosMovil; sticky: true;"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumnsPasajerosMovil"></tr>
+                        <tr [hidden]="(dataSourcePasajeros.data!.length || 0) > 0 || isLoading" mat-footer-row *matFooterRowDef="['noEncontro']"></tr>
+                      </table>
+                      
+                    </div>
+
                     <div *ngIf="isLoading" class="mb-3">
                       <mat-progress-bar
                         color="primary"
@@ -105,6 +269,7 @@
                     </div>
             
                 </div>
+
               </div>
 
             </mat-tab>
@@ -116,6 +281,39 @@
                 <mat-tab label="Gastos Fijos">
 
                   <div class="card shadowblue-matTabAnidado mb-3">
+
+                    <div class="card-header">
+                      <div class="row align-items-center">
+                        <div class="col-8">
+                          <div class="row">
+                            <div class="col-5 custom-ancho">
+                              <div class="card shadowContador">
+                                <div class="card-body">
+                                  <div class="row">
+                                    <div class="col-5 text-center custom-ancho">
+                                      <span><i class="fas fa-wallet"></i> Suma</span>
+                                    </div>
+                                    <div class="col-7 text-center custom-ancho">
+                                      <span>$ 5000.00</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-4 text-end">
+                          <button
+                            class="btn btn-primary btn-primary-custom ladda-button"
+                            [ladda]="loadDepartamento" data-style="slide-down"
+                            [disabled]="isLoading"
+                            (click)="openPPGF()"
+                          >
+                            Crear  <i class="fas fa-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
 
                     <div class="card-body modelo-tabla">
     
@@ -130,15 +328,8 @@
                               </td>
                             </ng-container>
             
-                            <ng-container matColumnDef="valor">
-                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Valores</th>
-                              <td mat-cell class="fila" *matCellDef="let element">
-                                {{ element.identificacion }}
-                              </td>
-                            </ng-container>
-            
                             <ng-container matColumnDef="final" stickyEnd>
-                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Seleccion</th>
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Valores</th>
                               <td mat-cell class="fila" *matCellDef="let element">
                                 {{ element.ciudad }}
                               </td>
@@ -174,6 +365,7 @@
                         </div>
                 
                     </div>
+
                   </div>
 
                 </mat-tab>
@@ -181,6 +373,39 @@
                 <mat-tab label="Gastos EMV">
 
                   <div class="card shadowblue-matTabAnidado mb-3">
+
+                    <div class="card-header">
+                      <div class="row align-items-center">
+                        <div class="col-8">
+                          <div class="row">
+                            <div class="col-5 custom-ancho">
+                              <div class="card shadowContador">
+                                <div class="card-body">
+                                  <div class="row">
+                                    <div class="col-5 text-center custom-ancho">
+                                      <span><i class="fas fa-wallet"></i> Suma</span>
+                                    </div>
+                                    <div class="col-7 text-center custom-ancho">
+                                      <span>$ 5000.00</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-4 text-end">
+                          <button
+                            class="btn btn-primary btn-primary-custom ladda-button"
+                            [ladda]="loadDepartamento" data-style="slide-down"
+                            [disabled]="isLoading"
+                            (click)="openPPEMV()"
+                          >
+                            Crear  <i class="fas fa-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
 
                     <div class="card-body modelo-tabla">
     
@@ -211,6 +436,13 @@
 
                             <ng-container matColumnDef="chofer">
                               <th mat-header-cell *matHeaderCellDef mat-sort-header>Chofer</th>
+                              <td mat-cell class="fila" *matCellDef="let element">
+                                {{ element.identificacion }}
+                              </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="extra">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Extra</th>
                               <td mat-cell class="fila" *matCellDef="let element">
                                 {{ element.identificacion }}
                               </td>
@@ -253,6 +485,7 @@
                         </div>
                 
                     </div>
+
                   </div>
                   
                 </mat-tab>
@@ -260,6 +493,39 @@
                 <mat-tab label="Gastos Por Personas">
 
                   <div class="card shadowblue-matTabAnidado mb-3">
+
+                    <div class="card-header">
+                      <div class="row align-items-center">
+                        <div class="col-8">
+                          <div class="row">
+                            <div class="col-5 custom-ancho">
+                              <div class="card shadowContador">
+                                <div class="card-body">
+                                  <div class="row">
+                                    <div class="col-5 text-center custom-ancho">
+                                      <span><i class="fas fa-wallet"></i> Suma</span>
+                                    </div>
+                                    <div class="col-7 text-center custom-ancho">
+                                      <span>$ 5000.00</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-4 text-end">
+                          <button
+                            class="btn btn-primary btn-primary-custom ladda-button"
+                            [ladda]="loadDepartamento" data-style="slide-down"
+                            [disabled]="isLoading"
+                            (click)="openPPGPP()"
+                          >
+                            Crear  <i class="fas fa-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
 
                     <div class="card-body modelo-tabla">
     
@@ -274,15 +540,8 @@
                               </td>
                             </ng-container>
             
-                            <ng-container matColumnDef="valorU">
-                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Valor Unitario</th>
-                              <td mat-cell class="fila" *matCellDef="let element">
-                                {{ element.identificacion }}
-                              </td>
-                            </ng-container>
-            
                             <ng-container matColumnDef="final" stickyEnd>
-                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Rollup</th>
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>Valor Unitario</th>
                               <td mat-cell class="fila" *matCellDef="let element">
                                 {{ element.ciudad }}
                               </td>
@@ -318,6 +577,7 @@
                         </div>
                 
                     </div>
+
                   </div>
 
                 </mat-tab>
@@ -420,6 +680,39 @@
 
                   <div class="card shadowblue-matTabAnidado mb-3">
 
+                    <div class="card-header">
+                      <div class="row align-items-center">
+                        <div class="col-8">
+                          <div class="row">
+                            <div class="col-5 custom-ancho">
+                              <div class="card shadowContador">
+                                <div class="card-body">
+                                  <div class="row">
+                                    <div class="col-5 text-center custom-ancho">
+                                      <span><i class="fas fa-wallet"></i> Suma</span>
+                                    </div>
+                                    <div class="col-7 text-center custom-ancho">
+                                      <span>$ 5000.00</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-4 text-end">
+                          <button
+                            class="btn btn-primary btn-primary-custom ladda-button"
+                            [ladda]="loadDepartamento" data-style="slide-down"
+                            [disabled]="isLoading"
+                            (click)="openPRGG()"
+                          >
+                            Crear  <i class="fas fa-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
                     <div class="card-body modelo-tabla">
     
                         <div class="overflow-auto">
@@ -491,6 +784,7 @@
                         </div>
                 
                     </div>
+
                   </div>
 
                 </mat-tab>
@@ -577,6 +871,7 @@
                         </div>
                 
                     </div>
+
                   </div>
 
                 </mat-tab>
@@ -591,3 +886,420 @@
 
     </div>
 </section>
+
+<ng-template #mdlPasajero>
+  <div class="modal-header p-0">
+    <div class="row">
+      <div class="col-2 text-center align-content-center">
+        <img class="img-modal" src="assets/img/ave.png" alt="">
+      </div>
+      <div class="col-8">
+        <h4 class="modal-title pull-left" style="font-size: 14px">
+          <span>Agregar Pasajero</span>
+        </h4>
+      </div>
+      <div class="col-2 text-center align-content-center">
+        <button
+          style="font-size: 20px"
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="modalRefPasajero.hide()"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <form [formGroup]="formPasajeros" class="row justify-content-center">
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Lista:</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <select class="form-control" formControlName="lista">
+                  <option *ngFor="let persona of listEjemplo" [value]="persona.id">
+                    {{ persona.nombre }}
+                  </option>
+                </select>
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-primary input-group-text"
+                    (click)="agregar();"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Pasajeros:</label>
+            <div class="col-sm-9">
+              <mat-chip-set>
+                <mat-chip
+                  *ngFor="let cliente of seleccionados"
+                  (click)="marcarPreferido(cliente)"
+                  [ngClass]="{ 'preferido-chip': preferido?.id === cliente.id }" 
+                  [color]="preferido?.id === cliente.id ? 'primary' : 'accent'" 
+                  (removed)="eliminar(cliente)"
+                >
+                  {{ cliente.nombre }}
+                  <mat-icon matChipRemove>close</mat-icon>
+                </mat-chip>
+              </mat-chip-set>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Color:</label>
+            <div class="col-sm-9">
+
+              <input
+                type="color"
+                formControlName="color"
+                class="form-control"
+              />
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Abono:</label>
+            <div class="col-sm-9">
+              <input type="text" onlyNumbers mask="separator.2" thousandSeparator=","
+              class="form-control" formControlName="abono" placeholder="xxx">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Banco:</label>
+            <div class="col-sm-9">
+              <select class="form-control" formControlName="banco">
+                <option value="">-Seleccione-</option>
+                <option value="guayaquil">Guayaquil</option>
+                <option value="pichincha">Pichincha</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 text-center">
+          <button
+            class="btn btn-primary"
+            (click)="pasajero();"
+          >
+            Color
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #mdlPPGF>
+  <div class="modal-header p-0">
+    <div class="row">
+      <div class="col-2 text-center align-content-center">
+        <img class="img-modal" src="assets/img/ave.png" alt="">
+      </div>
+      <div class="col-8">
+        <h4 class="modal-title pull-left" style="font-size: 14px">
+          <span>Agregar Gastos Fijos</span>
+        </h4>
+      </div>
+      <div class="col-2 text-center align-content-center">
+        <button
+          style="font-size: 20px"
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="modalRefPPGF.hide()"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <form [formGroup]="formPPGF" class="row justify-content-center">
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Descripción:</label>
+            <div class="col-sm-9">
+              <input type="text"
+              class="form-control" formControlName="descripcion" placeholder="Ingrese descripción">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Valor:</label>
+            <div class="col-sm-9">
+              <input type="text" onlyNumbers mask="separator.2" thousandSeparator=","
+              class="form-control" formControlName="valor" placeholder="0.00">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 text-center">
+          <button
+            class="btn btn-primary"
+          >
+            Guardar
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #mdlPPEMV>
+  <div class="modal-header p-0">
+    <div class="row">
+      <div class="col-2 text-center align-content-center">
+        <img class="img-modal" src="assets/img/ave.png" alt="">
+      </div>
+      <div class="col-8">
+        <h4 class="modal-title pull-left" style="font-size: 14px">
+          <span>Agregar Gastos EMV</span>
+        </h4>
+      </div>
+      <div class="col-2 text-center align-content-center">
+        <button
+          style="font-size: 20px"
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="modalRefPPEMV.hide()"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <form [formGroup]="formPPEMV" class="row justify-content-center">
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Descripción:</label>
+            <div class="col-sm-9">
+              <input type="text"
+              class="form-control" formControlName="descripcion" placeholder="Ingrese descripción">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Guia:</label>
+            <div class="col-sm-9">
+              <input type="text" onlyNumbers mask="separator.2" thousandSeparator=","
+              class="form-control" formControlName="guia" placeholder="0.0">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Ayudante:</label>
+            <div class="col-sm-9">
+              <input type="text" onlyNumbers mask="separator.2" thousandSeparator=","
+              class="form-control" formControlName="ayudante" placeholder="0.0">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Chofer:</label>
+            <div class="col-sm-9">
+              <input type="text" onlyNumbers mask="separator.2" thousandSeparator=","
+              class="form-control" formControlName="chofer" placeholder="0.0">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Extra:</label>
+            <div class="col-sm-9">
+              <input type="text" onlyNumbers mask="separator.2" thousandSeparator=","
+              class="form-control" formControlName="extra" placeholder="0.0">
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-12 text-center">
+          <button
+            class="btn btn-primary"
+          >
+            Guardar
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #mdlPPGPP>
+  <div class="modal-header p-0">
+    <div class="row">
+      <div class="col-2 text-center align-content-center">
+        <img class="img-modal" src="assets/img/ave.png" alt="">
+      </div>
+      <div class="col-8">
+        <h4 class="modal-title pull-left" style="font-size: 14px">
+          <span>Agregar Gastos por Persona</span>
+        </h4>
+      </div>
+      <div class="col-2 text-center align-content-center">
+        <button
+          style="font-size: 20px"
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="modalRefPPGPP.hide()"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <form [formGroup]="formPPGPP" class="row justify-content-center">
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Descripción:</label>
+            <div class="col-sm-9">
+              <input type="text"
+              class="form-control" formControlName="descripcion" placeholder="Ingrese descripción">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">V.unit:</label>
+            <div class="col-sm-9">
+              <input type="text" onlyNumbers mask="separator.2" thousandSeparator=","
+              class="form-control" formControlName="valor" placeholder="0.00">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 text-center">
+          <button
+            class="btn btn-primary"
+          >
+            Guardar
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #mdlPRGG>
+  <div class="modal-header p-0">
+    <div class="row">
+      <div class="col-2 text-center align-content-center">
+        <img class="img-modal" src="assets/img/ave.png" alt="">
+      </div>
+      <div class="col-8">
+        <h4 class="modal-title pull-left" style="font-size: 14px">
+          <span>Agregar Gastos Generales</span>
+        </h4>
+      </div>
+      <div class="col-2 text-center align-content-center">
+        <button
+          style="font-size: 20px"
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="modalRefPRGG.hide()"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <form [formGroup]="formPRGG" class="row justify-content-center">
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Descripción:</label>
+            <div class="col-sm-9">
+              <input type="text"
+              class="form-control" formControlName="descripcion" placeholder="Ingrese descripción">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Pasajeros:</label>
+            <div class="col-sm-9">
+              <input type="text" onlyNumbers mask="separator.2" thousandSeparator=","
+              class="form-control" formControlName="pasajeros" placeholder="0.0">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">V.unit:</label>
+            <div class="col-sm-9">
+              <input type="text" onlyNumbers mask="separator.2" thousandSeparator=","
+              class="form-control" formControlName="valor" placeholder="0.0">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Descuento:</label>
+            <div class="col-sm-9">
+              <input type="text" onlyNumbers mask="separator.2" thousandSeparator=","
+              class="form-control" formControlName="descuento" placeholder="0.0">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 text-center">
+          <button
+            class="btn btn-primary"
+          >
+            Guardar
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</ng-template>

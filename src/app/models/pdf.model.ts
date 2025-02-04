@@ -1,5 +1,6 @@
-import { formatDate } from "@angular/common";
+import { formatDate, registerLocaleData } from "@angular/common";
 import { environment } from "src/environments/environment";
+import localeEs from '@angular/common/locales/es';
 
 declare var require: any
 const pdfMake = require('pdfmake/build/pdfmake');
@@ -19,6 +20,7 @@ pdfMake.fonts = {
     bolditalics: 'Arial-Bold.ttf'
   }
 };
+registerLocaleData(localeEs, 'es');
 
 export class Pdf {
 
@@ -30,7 +32,7 @@ export class Pdf {
   });
     const hoy: Date = new Date();
     const format = "EEEE, d 'de' MMMM 'del' yyyy";
-    const locale = 'en-US';
+    const locale = 'es-ES';
     let f = formatDate(hoy, format, locale);
     f = f.charAt(0).toUpperCase() + f.slice(1);
     let docDefinition = {

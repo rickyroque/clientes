@@ -22,7 +22,7 @@
                   class="btn btn-primary btn-primary-custom ladda-button"
                   [ladda]="loadDepartamento" data-style="slide-down"
                   [disabled]="isLoading"
-                  (click)="generarPDF()"
+                  (click)="open()"
                 >
                   Crear  <i class="fas fa-plus"></i>
                 </button>
@@ -35,6 +35,45 @@
       <div class="col-12 p-0">
       
         <div class="card shadowgreen">
+
+          <div class="card-header">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <div class="row">
+                  <div class="col-5 custom-ancho">
+                    <div class="card shadowContador">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-5 text-center custom-ancho">
+                            <span><i class="fas fa-users"></i> Clientes</span>
+                          </div>
+                          <div class="col-7 text-center custom-ancho">
+                            <span>9999</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4 text-end">
+                <div class="btn-group" role="group">
+                  <button
+                    tooltip="Exportar PDF"
+                    class="btn btn-primary float-right ladda-button"
+                  >
+                    <i class="fas fa-file-pdf"></i>
+                  </button>
+                  <button
+                    tooltip="Exportar EXCEL"
+                    class="btn btn-primary float-right ladda-button"
+                  >
+                    <i class="fas fa-file-excel"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
           
           <div class="card-body modelo-tabla">
   
@@ -88,7 +127,7 @@
                   <th mat-header-cell *matHeaderCellDef>Experiencias</th>
                   <td mat-cell class="fila" *matCellDef="let element">
                     <button class="btn btn-outline-primary" (click)="ir(1);" tooltip="Ver Experiencias" data-bs-toggle="tooltip">
-                      <i class="far fa-star"></i>
+                      17
                     </button>
                   </td>
                 </ng-container>
@@ -129,7 +168,7 @@
     </div>
 </section>
 
-<ng-template #mdlEjemplo>
+<ng-template #mdlCliente>
   <div class="modal-header p-0">
     <div class="row">
       <div class="col-2 text-center align-content-center">
@@ -137,7 +176,7 @@
       </div>
       <div class="col-8">
         <h4 class="modal-title pull-left" style="font-size: 14px">
-          <span>Ejemplo</span>
+          <span>Crear Cliente</span>
         </h4>
       </div>
       <div class="col-2 text-center align-content-center">
@@ -159,38 +198,56 @@
 
         <div class="col-12 pb-3">
           <div class="row text-center align-items-center ">
-            <label class="col-sm-3 text-justify">Viaje:</label>
+            <label class="col-sm-3 text-justify">Nombre:</label>
             <div class="col-sm-9">
-              <select
-                formControlName="viaje"
-                class="form-select form-select-sm"
-              >
-                <option value="" selected>TODOS</option>
-                <option value="1">nombre</option>
-              </select>
-              <div class="invalid-feedback">
-                Debe ingresar <b>Viaje</b>.
-              </div>
+              <input type="text"
+              class="form-control" formControlName="nombre" placeholder="Nombre Cliente">
             </div>
           </div>
         </div>
 
         <div class="col-12 pb-3">
           <div class="row text-center align-items-center ">
-            <label class="col-sm-3 text-justify">Fecha:</label>
+            <label class="col-sm-3 text-justify">Identidad:</label>
+            <div class="col-sm-9">
+              <input type="text"
+              class="form-control" formControlName="identificacion" placeholder="Identidad del Cliente">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Telefono:</label>
+            <div class="col-sm-9">
+              <input type="text"
+              class="form-control" formControlName="telefono" placeholder="Telefono del Cliente">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Correo electrónico:</label>
+            <div class="col-sm-9">
+              <input type="text"
+              class="form-control" formControlName="correo" placeholder="Correo electrónico del Cliente">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Cumpleaños:</label>
             <div class="col-sm-9">
               <div class="input-group date">
                 <input
                     type="text"
-                    placeholder="Rango de Fecha"
-                    #dp="bsDaterangepicker"
+                    placeholder="Fecha de Nacimiento"
+                    #dp="bsDatepicker"
                     class="form-control"
-                    formControlName="fecha"
-                    bsDaterangepicker
-                    [bsConfig]="{
-                    isAnimated: true,
-                    containerClass: 'theme-dark-blue'
-                    }"
+                    formControlName="nacimiento"
+                    bsDatepicker
                 />
                 <div class="input-group-append">
                     <span
@@ -202,7 +259,26 @@
                 </div>
               </div>
               <div class="invalid-feedback">
-                Debe ingresar <b>Rango de fecha</b>.
+                Debe ingresar <b>Cumpleaños del Cliente</b>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-3">
+          <div class="row text-center align-items-center ">
+            <label class="col-sm-3 text-justify">Ciudad:</label>
+            <div class="col-sm-9">
+              <select
+                formControlName="ciudad"
+                class="form-select form-select-sm"
+              >
+                <option value="" selected>TODOS</option>
+                <option value="1">Guayaquil</option>
+                <option value="1">Quito</option>
+              </select>
+              <div class="invalid-feedback">
+                Debe ingresar <b>Ciudad</b>.
               </div>
             </div>
           </div>

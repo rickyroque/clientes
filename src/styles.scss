@@ -25,6 +25,11 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
 }
 
 .section-title{
@@ -131,6 +136,11 @@ xng-breadcrumb{
 
 .shadowgreen {
   box-shadow: 0 0 1rem 10px rgba(61, 168, 136, 0.2) !important;
+
+  .card-header{
+    background: white;
+    border-radius: 15px 15px 0px 0px;
+  }
 }
 
 .shadowblue {
@@ -144,11 +154,40 @@ xng-breadcrumb{
   box-shadow: 0 .5rem 1rem rgb(58 79 123 / 20%) !important;
 }
 
+.shadowContador {
+  margin-top: 0 !important;
+  border-radius: 15px;
+  border: 2px solid rgb(58 79 123 / 20%);
+  width: fit-content;
+}
+
+.custom-ancho{
+  width: fit-content;
+}
+
 .shadowblue-matTabAnidado {
   margin-top: 1rem !important;
   border-radius: 15px 15px 15px 15px;
   border: 2px solid rgb(58 79 123 / 20%);
   box-shadow: 0 .5rem 1rem rgb(58 79 123 / 20%) !important;
+
+  .card-header{
+    background: white;
+    border-radius: 15px 15px 0px 0px;
+  }
+
+}
+
+.btn-group{
+  .btn-primary{
+    background-color: rgba(58, 79, 123, 1);
+    color: white;
+    border: none;
+    &:hover{
+        background-color: #3DA888;
+        color: white;
+  }
+  }
 }
 
 .modelo-tabla {
@@ -208,7 +247,8 @@ xng-breadcrumb{
     .mat-mdc-cell.mat-column-accion, .mat-mdc-header-cell.mat-column-accion,
     .mat-mdc-cell.mat-column-valor, .mat-mdc-header-cell.mat-column-valor,
     .mat-mdc-cell.mat-column-balance, .mat-mdc-header-cell.mat-column-balance,
-    .mat-mdc-cell.mat-column-final, .mat-mdc-header-cell.mat-column-final {
+    .mat-mdc-cell.mat-column-final, .mat-mdc-header-cell.mat-column-final,
+    .mat-mdc-cell.mat-column-saldo, .mat-mdc-header-cell.mat-column-saldo {
       left: -1px !important;
       z-index: 101 !important;
     }
@@ -276,5 +316,20 @@ mat-paginator .mdc-notched-outline {
   opacity: 0.9;
   z-index: 99999999999 !important;
   position: relative;
-  //transform: translate3d(17px, -50px, 0px) !important; 
+}
+
+.btn-barraMenu{
+  background: transparent;
+  border-color: transparent;
+  color: white;
+
+  span{
+    margin-left: 5px;
+  }
+
+  &:hover{
+    background-color: rgb(224, 239, 243);
+    color: rgba(58, 79, 123, 1);
+  }
+
 }

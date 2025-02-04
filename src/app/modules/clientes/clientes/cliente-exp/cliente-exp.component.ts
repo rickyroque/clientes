@@ -15,16 +15,13 @@ import { Pdf } from 'src/app/models/pdf.model';
 })
 export class ClienteExpComponent implements OnInit{
 
-  title = 'Experiencias del Cliente';
+    title = 'Experiencias del Cliente';
   
   
     displayedColumns: string[] = [
       'nombre',
       'identificacion',
-      'telefono',
-      'email',
-      'nacimiento',
-      'ciudad',
+      'observacion',
       'accion',
     ];
   
@@ -76,7 +73,7 @@ export class ClienteExpComponent implements OnInit{
     }
   
     ir(id: any) {
-      
+      this.router.navigate(['/home/calendario/calendario-det', id]);
     }
   
     generarPDF() {

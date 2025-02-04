@@ -10,10 +10,12 @@ import { LaddaModule } from 'angular2-ladda';
 import { AppBootstrapModule } from 'src/app/app-bootstrap.module';
 import { ExperienciasComponent } from './experiencias/experiencias.component';
 import { ExperienciasRoutingModule } from './experiencias-routing.module';
+import { ExpDetComponent } from './experiencias/exp-det/exp-det.component';
 
 @NgModule({
   declarations: [
-    ExperienciasComponent
+    ExperienciasComponent,
+    ExpDetComponent
   ],
   imports: [
     ExperienciasRoutingModule,
