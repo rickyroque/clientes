@@ -11,7 +11,7 @@ import { Pdf } from 'src/app/models/pdf.model';
 @Component({
   selector: 'app-contabilidad',
   templateUrl: './contabilidad.component.html',
-  styleUrls: ['./contabilidad.component.css']
+  styleUrls: ['./contabilidad.component.scss']
 })
 export class ContabilidadComponent implements OnInit {
   
@@ -90,6 +90,36 @@ export class ContabilidadComponent implements OnInit {
   
   ngOnInit(): void {
     this.cargarCalendario();
+  }
+
+  ngAfterViewInit() {
+    this.dataSourceBalance.paginator = this.paginatorBalance;
+    this.dataSourceIngresos.paginator = this.paginatorIngresos;
+    this.dataSourceSaldos.paginator = this.paginatorSaldos;
+  
+    this.paginatorBalance.page.subscribe(() => {
+      setTimeout(() => {
+        this.reaplicarEstilos();
+      }, 0);
+    });
+    this.paginatorIngresos.page.subscribe(() => {
+      setTimeout(() => {
+        this.reaplicarEstilos();
+      }, 0);
+    });
+    this.paginatorSaldos.page.subscribe(() => {
+      setTimeout(() => {
+        this.reaplicarEstilos();
+      }, 0);
+    });
+  }
+
+  reaplicarEstilos() {
+    const headerCells = document.querySelectorAll('.modelo-tabla');
+
+    headerCells.forEach((cell) => {
+      cell.classList.add('modelo-tabla');
+    });
   }
 
   cargarCalendario() {

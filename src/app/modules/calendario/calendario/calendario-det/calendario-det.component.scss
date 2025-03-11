@@ -1,0 +1,172 @@
+.preferido-chip {
+  background-color: #3DA888 !important; /* Color para el chip preferido */
+  color: white !important;
+
+  mat-icon{
+    color: white !important;
+  }
+  
+  .mat-mdc-chip-action-label{
+    color: white !important;
+  }
+  
+}
+
+
+.tabla-Pasajeros {
+    
+  .table-modelGEscritorio {
+  
+      .mat-mdc-cell.mat-column-nombre, .mat-mdc-header-cell.mat-column-nombre{
+          right: -1px !important;
+          z-index: 101 !important;
+      }
+  
+      .mat-mdc-cell.mat-column-balance, .mat-mdc-header-cell.mat-column-balance {
+          left: -1px !important;
+          z-index: 101 !important;
+      }
+
+  } 
+
+  .table-modelGMovil {
+  
+    .mat-mdc-cell.mat-column-nombre, .mat-mdc-header-cell.mat-column-nombre{
+        right: -1px !important;
+        z-index: 101 !important;
+    }
+
+    .mat-mdc-cell.mat-column-saldo, .mat-mdc-header-cell.mat-column-saldo {
+        left: -1px !important;
+        z-index: 101 !important;
+    }
+
+  } 
+
+}
+
+.tabla-GFijos {
+    
+  .table-modelG {
+  
+      .mat-mdc-cell.mat-column-descripcion, .mat-mdc-header-cell.mat-column-descripcion{
+          right: -1px !important;
+          z-index: 101 !important;
+      }
+  
+      .mat-mdc-cell.mat-column-final, .mat-mdc-header-cell.mat-column-final {
+          left: -1px !important;
+          z-index: 101 !important;
+      }
+
+  } 
+
+}
+
+.tabla-GEMV {
+    
+  .table-modelG {
+  
+      .mat-mdc-cell.mat-column-descripcion, .mat-mdc-header-cell.mat-column-descripcion{
+          right: -1px !important;
+          z-index: 101 !important;
+      }
+  
+      .mat-mdc-cell.mat-column-final, .mat-mdc-header-cell.mat-column-final {
+          left: -1px !important;
+          z-index: 101 !important;
+      }
+
+  } 
+
+}
+
+.tabla-tabla-GxP {
+    
+  .table-modelG {
+  
+      .mat-mdc-cell.mat-column-descripcion, .mat-mdc-header-cell.mat-column-descripcion{
+          right: -1px !important;
+          z-index: 101 !important;
+      }
+  
+      .mat-mdc-cell.mat-column-final, .mat-mdc-header-cell.mat-column-final {
+          left: -1px !important;
+          z-index: 101 !important;
+      }
+
+  } 
+
+}
+
+.tabla-BGeneral {
+    
+  .table-modelG {
+  
+      .mat-mdc-cell.mat-column-descripcion, .mat-mdc-header-cell.mat-column-descripcion{
+          right: -1px !important;
+          z-index: 101 !important;
+      }
+  
+      .mat-mdc-cell.mat-column-final, .mat-mdc-header-cell.mat-column-final {
+          left: -1px !important;
+          z-index: 101 !important;
+      }
+
+  } 
+
+}
+
+.tabla-BGeneral {
+    
+  .table-modelG {
+  
+      .mat-mdc-cell.mat-column-descripcion, .mat-mdc-header-cell.mat-column-descripcion{
+          right: -1px !important;
+          z-index: 101 !important;
+      }
+  
+      .mat-mdc-cell.mat-column-final, .mat-mdc-header-cell.mat-column-final {
+          left: -1px !important;
+          z-index: 101 !important;
+      }
+
+  } 
+
+}
+
+.tabla-GastosR {
+    
+  .table-modelG {
+  
+      .mat-mdc-cell.mat-column-descripcion, .mat-mdc-header-cell.mat-column-descripcion{
+          right: -1px !important;
+          z-index: 101 !important;
+      }
+  
+      .mat-mdc-cell.mat-column-final, .mat-mdc-header-cell.mat-column-final {
+          left: -1px !important;
+          z-index: 101 !important;
+      }
+
+  } 
+
+}
+
+.tabla-BalanceF {
+    
+  .table-modelG {
+  
+      .mat-mdc-cell.mat-column-descripcion, .mat-mdc-header-cell.mat-column-descripcion{
+          right: -1px !important;
+          z-index: 101 !important;
+      }
+  
+      .mat-mdc-cell.mat-column-final, .mat-mdc-header-cell.mat-column-final {
+          left: -1px !important;
+          z-index: 101 !important;
+      }
+
+  } 
+
+}

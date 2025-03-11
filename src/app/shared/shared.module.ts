@@ -6,7 +6,6 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { AlertsMsgComponent } from './components/alerts/alerts-msg.component';
 
 
-
 @NgModule({
   declarations: [
     LoadingComponent,

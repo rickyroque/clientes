@@ -1,0 +1,25 @@
+.btn-outline-primary{
+    border: none;
+    padding: 0;
+    &:hover{
+        background: none;
+    }
+}
+
+.tabla-Calendario {
+    
+    .table-modelG {
+    
+        .mat-mdc-cell.mat-column-viaje, .mat-mdc-header-cell.mat-column-viaje{
+            right: -1px !important;
+            z-index: 101 !important;
+        }
+    
+        .mat-mdc-cell.mat-column-accion, .mat-mdc-header-cell.mat-column-accion {
+            left: -1px !important;
+            z-index: 101 !important;
+        }
+  
+    } 
+  
+}

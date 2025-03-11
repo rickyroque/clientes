@@ -15,18 +15,27 @@ import { Pdf } from 'src/app/models/pdf.model';
 })
 export class ExpDetComponent {
 
-  title = 'Viajes de la Experiencia';
+  title = 'Administración de la Experiencia';
   
-  
-  displayedColumns: string[] = [
+  dataSourceViajes: MatTableDataSource<Clientes> = new MatTableDataSource<Clientes>([]);
+  @ViewChild('sortViajes', { static: true }) sortViajes!: MatSort;
+  @ViewChild('paginatorViajes', { static: true }) paginatorViajes!: MatPaginator;
+
+  displayedColumnsViajes: string[] = [
     'nombre',
     'pasajeros',
     'accion',
   ];
 
-  dataSource: MatTableDataSource<Clientes> = new MatTableDataSource<Clientes>([]);
-  @ViewChild(MatSort, { static: true }) sort!: MatSort;
-  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  dataSourceActividades: MatTableDataSource<Clientes> = new MatTableDataSource<Clientes>([]);
+  @ViewChild('sortActividades', { static: true }) sortActividades!: MatSort;
+  @ViewChild('paginatorActividades', { static: true }) paginatorActividades!: MatPaginator;
+
+  displayedColumnsActividades: string[] = [
+    'nombre',
+    'accion',
+  ];
+
 
   isLoading!: boolean;
   loadDepartamento : boolean = false;
@@ -65,9 +74,13 @@ export class ExpDetComponent {
       
     ].map((el) => new Clientes(el));
 
-    this.dataSource.data = this.listClientes;
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.dataSourceViajes.data = this.listClientes;
+    this.dataSourceViajes.paginator = this.paginatorViajes;
+    this.dataSourceViajes.sort = this.sortViajes;
+
+    this.dataSourceActividades.data = this.listClientes;
+    this.dataSourceActividades.paginator = this.paginatorActividades;
+    this.dataSourceActividades.sort = this.sortActividades;
           
   }
 

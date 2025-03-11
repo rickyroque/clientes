@@ -1,11 +1,27 @@
 <section class="section">
     <div class="section-header text-primary">
       <div class="row">
-        <div class="col-sm-8">
+        <div class="col-7">
           <h1 class="section-title">
             {{ title | uppercase }}
           </h1>
           <xng-breadcrumb></xng-breadcrumb>
+        </div>
+        <div class="col-5 align-content-center">
+  
+          <div class="row text-end">
+            <div class="col-12">
+              <button
+                class="btn btn-primary btn-primary-custom ladda-button"
+                [ladda]="loadDepartamento" data-style="slide-down"
+                [disabled]="isLoading"
+                (click)="open()"
+              >
+                Crear  <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -15,30 +31,8 @@
       <div class="col-12 p-0">
       
         <div class="card shadowgreen">
-          <div class="card-body">
-
-            <div class="row text-end">
-              <div class="col-12">
-                <button
-                  class="btn btn-primary btn-primary-custom ladda-button"
-                  [ladda]="loadDepartamento" data-style="slide-down"
-                  [disabled]="isLoading"
-                  (click)="open()"
-                >
-                  Crear  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 p-0">
-      
-        <div class="card shadowgreen">
           
-          <div class="card-body  modelo-tabla">
+          <div class="card-body modelo-tabla tabla-Calendario">
   
             <div class="overflow-auto">
               
@@ -75,8 +69,13 @@
                 <ng-container matColumnDef="accion" stickyEnd>
                   <th mat-header-cell *matHeaderCellDef>Detalle</th>
                   <td mat-cell class="fila" *matCellDef="let element">
-                    <button class="btn btn-outline-primary" (click)="ir(1);" tooltip="Ver Detalle" data-bs-toggle="tooltip">
-                      <i class="fas fa-info-circle"></i>
+                    <button class="btn btn-outline-primary" data-bs-toggle="tooltip" (click)="ir(1)">
+                      <animated-icons
+                        src="assets/animatedIcons/boat.json"
+                        trigger="loop-on-hover"
+                        height="fit-content"
+                        width="fit-content"
+                      ></animated-icons>
                     </button>
                   </td>
                 </ng-container>
@@ -90,7 +89,7 @@
                 </ng-container>
   
                 <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 <tr [hidden]="(dataSource.data!.length || 0) > 0 || isLoading" mat-footer-row *matFooterRowDef="['noEncontro']"></tr>
               </table>
               

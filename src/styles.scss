@@ -152,6 +152,11 @@ xng-breadcrumb{
   border-radius: 0 15px 15px 15px;
   border: 2px solid rgb(58 79 123 / 20%);
   box-shadow: 0 .5rem 1rem rgb(58 79 123 / 20%) !important;
+
+  .card-header{
+    background: white;
+    border-radius: 15px 15px 0px 0px;
+  }
 }
 
 .shadowContador {
@@ -187,72 +192,6 @@ xng-breadcrumb{
         background-color: #3DA888;
         color: white;
   }
-  }
-}
-
-.modelo-tabla {
-  overflow-x: auto;
-
-  .mat-mdc-header-cell:first-child, .mat-mdc-cell:first-child {
-    border-right: 2px solid #e5e8f4 !important;
-    z-index: 3 !important;
-    left: 0px !important;
-  }
-
-  .mat-mdc-header-cell:last-child, .mat-mdc-cell:last-child {
-    border-left: 2px solid #e5e8f4 !important;
-    z-index: 3 !important;
-    right: 0px !important;
-  }
-
-  .mat-mdc-cell:not(:first-child) {
-    margin-left: -2px !important;
-  }
-
-  .table-modelG {
-    //table-layout: fixed;
-    border-collapse: separate !important;
-    border-spacing: 0 !important;
-    width: -webkit-fill-available !important;
-
-    .mdc-data-table__cell{
-      overflow: visible;
-    }
-    
-    th.mat-mdc-header-cell {
-        
-      .mat-sort-header-container {
-        justify-content: center !important;
-        .mat-sort-header-content {
-          display: block !important;
-          width: 100px !important;
-        }
-      }
-    }
-      
-    td.mat-mdc-cell,
-    th.mat-mdc-header-cell {
-      text-align: center !important;
-      padding-left: 0.35rem !important;
-      padding-right: 0.35rem !important;
-    }
-
-    .mat-mdc-cell.mat-column-viaje, .mat-mdc-header-cell.mat-column-viaje,
-    .mat-mdc-cell.mat-column-nombre, .mat-mdc-header-cell.mat-column-nombre,
-    .mat-mdc-cell.mat-column-descripcion, .mat-mdc-header-cell.mat-column-descripcion {
-      right: -1px !important;
-      z-index: 101 !important;
-    }
-
-    .mat-mdc-cell.mat-column-accion, .mat-mdc-header-cell.mat-column-accion,
-    .mat-mdc-cell.mat-column-valor, .mat-mdc-header-cell.mat-column-valor,
-    .mat-mdc-cell.mat-column-balance, .mat-mdc-header-cell.mat-column-balance,
-    .mat-mdc-cell.mat-column-final, .mat-mdc-header-cell.mat-column-final,
-    .mat-mdc-cell.mat-column-saldo, .mat-mdc-header-cell.mat-column-saldo {
-      left: -1px !important;
-      z-index: 101 !important;
-    }
-
   }
 }
 
@@ -330,6 +269,119 @@ mat-paginator .mdc-notched-outline {
   &:hover{
     background-color: rgb(224, 239, 243);
     color: rgba(58, 79, 123, 1);
+    border: none;
   }
+
+}
+
+.theme-green .bs-datepicker-head {
+  background-color: rgba(58, 79, 123, 1);
+}
+
+.mat-tab-group-main-TabsAnidados {
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+
+  > .mat-mdc-tab-header {
+    border-radius: 15px !important;
+    margin-left: 40px !important;
+    margin-right: 40px !important;
+    background-color: white !important;
+    box-shadow: 0 0.5rem 1rem rgba(61, 168, 136, 0.2) !important;
+    border: 2px solid rgba(61, 168, 136, 0.2) !important;
+
+    .mat-mdc-tab-list .mat-mdc-tab-labels {
+
+      width: 100%;
+
+      .mdc-tab.mat-mdc-tab.mdc-tab--active.mdc-tab-indicator--active {
+          background-color: #3da88875 !important;
+          font-weight: bold !important;
+          border: none !important;
+          border-radius: 0 !important;
+      }
+
+      .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+          color: white !important;
+      }
+    }
+
+  }
+
+  .mat-tab-group-child {
+
+    >  .mat-mdc-tab-header {
+      background-color: white !important;
+      border: 2px solid #e5e8f4 !important;
+      border-radius: 10px !important;
+    }
+
+    .mat-mdc-tab-list .mat-mdc-tab-labels {
+
+      width: 100% !important;
+
+      .mdc-tab.mat-mdc-tab.mdc-tab--active.mdc-tab-indicator--active {
+          background-color: white !important;
+          border: none !important;
+          border-radius: 0 !important;
+      }
+      
+      .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+          color: rgba(58, 79, 123) !important;
+      }
+
+    }
+  }
+
+}
+
+.modelo-tabla {
+  overflow-x: auto;
+
+  .mat-mdc-header-cell:first-child, .mat-mdc-cell:first-child {
+    border-right: 2px solid #e5e8f4 !important;
+    z-index: 3 !important;
+    left: 0px !important;
+  }
+
+  .mat-mdc-header-cell:last-child, .mat-mdc-cell:last-child {
+    border-left: 2px solid #e5e8f4 !important;
+    z-index: 3 !important;
+    right: 0px !important;
+  }
+
+  .mat-mdc-cell:not(:first-child) {
+    margin-left: -2px !important;
+  }
+
+  .table-modelG {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    width: -webkit-fill-available !important;
+
+    .mdc-data-table__cell{
+      overflow: visible;
+    }
+
+    th.mat-mdc-header-cell {
+        
+      .mat-sort-header-container {
+        justify-content: center !important;
+        .mat-sort-header-content {
+          display: block !important;
+          width: 100px !important;
+        }
+      }
+    }
+      
+    td.mat-mdc-cell,
+    th.mat-mdc-header-cell {
+      text-align: center !important;
+      padding-left: 0.35rem !important;
+      padding-right: 0.35rem !important;
+    }
+
+  } 
 
 }

@@ -14,7 +14,7 @@
 
       <div class="col-12 p-0">
       
-        <mat-tab-group class="mat-tab-group-main">
+        <mat-tab-group class="mat-tab-group-main-TabsAnidados">
 
             <mat-tab label="Pasajeros">
                 
@@ -149,11 +149,11 @@
 
                 </div>
 
-                <div class="card-body modelo-tabla">
+                <div class="card-body modelo-tabla tabla-Pasajeros">
 
                     <div class="overflow-auto d-none d-md-block">
                       
-                      <table class="table-modelG" mat-table #sortPasajeros="matSort" matSort [dataSource]="dataSourcePasajeros">
+                      <table class="table-modelG table-modelGEscritorio" mat-table #sortPasajeros="matSort" matSort [dataSource]="dataSourcePasajeros">
                         
                         <ng-container matColumnDef="nombre" sticky>
                           <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombres</th>
@@ -216,7 +216,7 @@
 
                     <div class="overflow-auto d-block d-md-none">
                       
-                      <table class="table-modelG" mat-table #sortPasajeros="matSort" matSort [dataSource]="dataSourcePasajeros">
+                      <table class="table-modelG table-modelGMovil" mat-table #sortPasajeros="matSort" matSort [dataSource]="dataSourcePasajeros">
                         
                         <ng-container matColumnDef="nombre" sticky>
                           <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombres</th>
@@ -315,7 +315,7 @@
                       </div>
                     </div>
 
-                    <div class="card-body modelo-tabla">
+                    <div class="card-body modelo-tabla tabla-GFijos">
     
                         <div class="overflow-auto">
                           
@@ -407,7 +407,7 @@
                       </div>
                     </div>
 
-                    <div class="card-body modelo-tabla">
+                    <div class="card-body modelo-tabla tabla-GEMV">
     
                         <div class="overflow-auto">
                           
@@ -527,7 +527,7 @@
                       </div>
                     </div>
 
-                    <div class="card-body modelo-tabla">
+                    <div class="card-body modelo-tabla tabla-GxP">
     
                         <div class="overflow-auto">
                           
@@ -586,7 +586,7 @@
 
                   <div class="card shadowblue-matTabAnidado mb-3">
 
-                    <div class="card-body modelo-tabla">
+                    <div class="card-body modelo-tabla tabla-BGeneral">
     
                         <div class="overflow-auto">
                           
@@ -713,7 +713,7 @@
                       </div>
                     </div>
 
-                    <div class="card-body modelo-tabla">
+                    <div class="card-body modelo-tabla tabla-GastosR">
     
                         <div class="overflow-auto">
                           
@@ -793,7 +793,7 @@
 
                   <div class="card shadowblue-matTabAnidado mb-3">
 
-                    <div class="card-body modelo-tabla">
+                    <div class="card-body modelo-tabla tabla-BalanceF">
     
                         <div class="overflow-auto">
                           

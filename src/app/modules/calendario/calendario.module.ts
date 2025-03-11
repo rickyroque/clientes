@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CalendarioComponent } from './calendario/calendario.component';
@@ -35,5 +35,6 @@ import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-ma
   providers: [
     provideEnvironmentNgxMask()
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CalendarioModule { }

@@ -64,6 +64,24 @@ export class ClientesComponent implements OnInit{
     this.cargarCalendario();
   }
 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  
+    this.paginator.page.subscribe(() => {
+      setTimeout(() => {
+        this.reaplicarEstilos();
+      }, 0);
+    });
+  }
+
+  reaplicarEstilos() {
+    const headerCells = document.querySelectorAll('.modelo-tabla');
+
+    headerCells.forEach((cell) => {
+      cell.classList.add('modelo-tabla');
+    });
+  }
+  
   cargarCalendario() {
     
     this.listClientes = [

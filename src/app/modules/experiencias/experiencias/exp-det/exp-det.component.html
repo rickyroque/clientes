@@ -30,12 +30,13 @@
         <mat-tab-group class="ofertasAcc-tab-group">
 
             <mat-tab label="Lista de Viajes">
+
                 <div class="card shadowblue-matTab mb-3">
                     <div class="card-body modelo-tabla">
   
                         <div class="overflow-auto">
                           
-                          <table class="table-modelG" mat-table matSort [dataSource]="dataSource">
+                          <table class="table-modelG" mat-table #sortViajes="matSort" matSort [dataSource]="dataSourceViajes">
                             
                             <ng-container matColumnDef="nombre" sticky>
                               <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
@@ -57,7 +58,7 @@
                                 <div class="d-inline-block">
                                   <button class="btn btn-outline-primary" tooltip="Ir al viaje" data-bs-toggle="tooltip" data-bs-placement="end"
                                   (click)="ir(1);">
-                                    <i class="far fa-star"></i>
+                                    <i class="far fa-calendar-alt"></i>
                                   </button>
                                 </div>
                               </td>
@@ -71,9 +72,9 @@
                               </td>
                             </ng-container>
               
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-                            <tr [hidden]="(dataSource.data!.length || 0) > 0 || isLoading" mat-footer-row *matFooterRowDef="['noEncontro']"></tr>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumnsViajes; sticky: true;"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumnsViajes"></tr>
+                            <tr [hidden]="(dataSourceViajes.data!.length || 0) > 0 || isLoading" mat-footer-row *matFooterRowDef="['noEncontro']"></tr>
                           </table>
                           
                         </div>
@@ -86,6 +87,7 @@
                         </div>
                         <div>
                           <mat-paginator
+                            #paginatorViajes
                             [pageSizeOptions]="[10, 20, 30]"
                             showFirstLastButtons
                           ></mat-paginator>
@@ -94,6 +96,77 @@
                     </div>
                 </div>
             </mat-tab>
+
+            <mat-tab label="Lista de Actividades">
+
+              <div class="card shadowblue-matTab mb-3">
+
+                  <div class="card-header">
+
+                    <div class="row align-items-center text-end">
+
+                      <div class="col-12">
+                        <button class="btn btn-primary btn-primary-custom ladda-button">
+                          Crear  <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <div class="card-body modelo-tabla">
+
+                      <div class="overflow-auto">
+                        
+                        <table class="table-modelG" mat-table #sortActividades="matSort" matSort [dataSource]="dataSourceActividades">
+                          
+                          <ng-container matColumnDef="nombre" sticky>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Descripcion</th>
+                            <td mat-cell class="fila" *matCellDef="let element">
+                              {{ element.nombre }}
+                            </td>
+                          </ng-container>
+          
+                          <ng-container matColumnDef="accion" stickyEnd>
+                            <th mat-header-cell *matHeaderCellDef>Precio</th>
+                            <td mat-cell class="fila" *matCellDef="let element">
+                              {{ element.nombre }}
+                            </td>
+                          </ng-container>
+            
+                          <ng-container matColumnDef="noEncontro">
+                            <td class="px-1" mat-footer-cell *matFooterCellDef [attr.colspan]="7">
+                                <div class="w-100 text-center">
+                                    <span>NO SE ENCONTRARON RESULTADOS...</span>
+                                </div>
+                            </td>
+                          </ng-container>
+            
+                          <tr mat-header-row *matHeaderRowDef="displayedColumnsActividades; sticky: true;"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumnsActividades"></tr>
+                          <tr [hidden]="(dataSourceActividades.data!.length || 0) > 0 || isLoading" mat-footer-row *matFooterRowDef="['noEncontro']"></tr>
+                        </table>
+                        
+                      </div>
+                      
+                      <div *ngIf="isLoading" class="mb-3">
+                        <mat-progress-bar
+                          color="primary"
+                          mode="indeterminate"
+                        ></mat-progress-bar>
+                      </div>
+                      <div>
+                        <mat-paginator
+                          #paginatorActividades
+                          [pageSizeOptions]="[10, 20, 30]"
+                          showFirstLastButtons
+                        ></mat-paginator>
+                      </div>
+              
+                  </div>
+              </div>
+          </mat-tab>
   
         </mat-tab-group>
 

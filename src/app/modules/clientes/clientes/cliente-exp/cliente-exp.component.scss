@@ -1,0 +1,19 @@
+.tabla-ListaClientesExp {
+    
+    .table-modelG {
+    
+        .mat-mdc-cell.mat-column-nombre, .mat-mdc-header-cell.mat-column-nombre{
+            top: auto !important;
+            right: -1px !important;
+            z-index: 101 !important;
+        }
+    
+        .mat-mdc-cell.mat-column-accion, .mat-mdc-header-cell.mat-column-accion {
+            top: auto !important;
+            left: -1px !important;
+            z-index: 101 !important;
+        }
+  
+    } 
+  
+}

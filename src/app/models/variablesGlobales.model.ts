@@ -6,7 +6,7 @@ export class VariablesGlobales {
   public static title: string = '';
   
   static _idKernel: string = platform.description ?? 'Descripción no disponible';
-  static _idEquipo: string = '';
+  static _idEquipo: string = '190.214.74.136';
   static _equipo: string =
     platform.os!.family +
     ' ' +

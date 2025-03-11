@@ -16,7 +16,6 @@ import { MainComponent } from './main/main.component';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-    
   ],
   providers: [
   ],

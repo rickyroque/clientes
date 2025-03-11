@@ -11,7 +11,7 @@ import { Pdf } from 'src/app/models/pdf.model';
 @Component({
   selector: 'app-calendario-det',
   templateUrl: './calendario-det.component.html',
-  styleUrls: ['./calendario-det.component.css']
+  styleUrls: ['./calendario-det.component.scss']
 })
 export class CalendarioDetComponent implements OnInit{
   
@@ -203,6 +203,68 @@ export class CalendarioDetComponent implements OnInit{
 
   ngOnInit(): void {
     this.cargarCalendario();
+  }
+
+  ngAfterViewInit() {
+    this.dataSourcePasajeros.paginator = this.paginatorPasajeros;
+
+    this.dataSourceGastosF.paginator = this.paginatorGastosF;
+    this.dataSourceGastosEMV.paginator = this.paginatorGastosEMV;
+    this.dataSourceGastosXP.paginator = this.paginatorGastosXP;
+    this.dataSourceBalanceG.paginator = this.paginatorBalanceG;
+
+    this.dataSourceGastosR.paginator = this.paginatorGastosR;
+    this.dataSourceBalanceF.paginator = this.paginatorBalanceF;
+  
+    this.paginatorPasajeros.page.subscribe(() => {
+      setTimeout(() => {
+        this.reaplicarEstilos();
+      }, 0);
+    });
+
+    this.paginatorGastosF.page.subscribe(() => {
+      setTimeout(() => {
+        this.reaplicarEstilos();
+      }, 0);
+    });
+
+    this.paginatorGastosEMV.page.subscribe(() => {
+      setTimeout(() => {
+        this.reaplicarEstilos();
+      }, 0);
+    });
+
+    this.paginatorGastosXP.page.subscribe(() => {
+      setTimeout(() => {
+        this.reaplicarEstilos();
+      }, 0);
+    });
+
+    this.paginatorBalanceG.page.subscribe(() => {
+      setTimeout(() => {
+        this.reaplicarEstilos();
+      }, 0);
+    });
+
+    this.paginatorGastosR.page.subscribe(() => {
+      setTimeout(() => {
+        this.reaplicarEstilos();
+      }, 0);
+    });
+
+    this.paginatorBalanceF.page.subscribe(() => {
+      setTimeout(() => {
+        this.reaplicarEstilos();
+      }, 0);
+    });
+  }
+
+  reaplicarEstilos() {
+    const headerCells = document.querySelectorAll('.modelo-tabla');
+
+    headerCells.forEach((cell) => {
+      cell.classList.add('modelo-tabla');
+    });
   }
 
   cargarCalendario() {

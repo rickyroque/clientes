@@ -2,8 +2,8 @@ export const environment = {
     
     id: '49b06244f1c84ae18c4b0d7f0a1ae226',
     
-    apiHost: 'https://api-pg.futurocasadevalores.com/',
-    apiServices: 'https://clientes-pg.futurocasadevalores.com/',
+    apiHost: 'https://pruebas.myinsomniaradio.com/',
+    //apiServices: 'https://clientes-pg.futurocasadevalores.com/',
 
     base64:{
         img:{

@@ -5,7 +5,7 @@ import { MainComponent } from './main/main.component';
 const routes: Routes = [
     {
         path: '',
-        data: { title: 'Main', breadcrumb: 'main' }, component: MainComponent,
+        data: { title: 'Main', breadcrumb: 'Inicio' }, component: MainComponent,
 
         children: [
             {

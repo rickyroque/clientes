@@ -1,36 +1,33 @@
 <section class="section">
     <div class="section-header text-primary">
       <div class="row">
-        <div class="col-sm-8">
+
+        <div class="col-7">
           <h1 class="section-title">
             {{ title | uppercase }}
           </h1>
           <xng-breadcrumb></xng-breadcrumb>
         </div>
+
+        <div class="col-5 align-content-center">
+          <div class="row text-end">
+            <div class="col-12">
+              <button
+                class="btn btn-primary btn-primary-custom ladda-button"
+                [ladda]="loadDepartamento" data-style="slide-down"
+                [disabled]="isLoading"
+                (click)="open()"
+              >
+                Crear  <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
     <div class="section-body animated fadeInRight">
-
-      <div class="col-12 p-0">
-      
-        <div class="card shadowgreen">
-          <div class="card-body">
-            <div class="row text-end">
-              <div class="col-12">
-                <button
-                  class="btn btn-primary btn-primary-custom ladda-button"
-                  [ladda]="loadDepartamento" data-style="slide-down"
-                  [disabled]="isLoading"
-                  (click)="open()"
-                >
-                  Crear  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div class="col-12 p-0">
       
@@ -75,7 +72,7 @@
             </div>
           </div>
           
-          <div class="card-body modelo-tabla">
+          <div class="card-body modelo-tabla tabla-ListaClientes">
   
             <div class="overflow-auto">
               
